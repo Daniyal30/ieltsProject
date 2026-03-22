@@ -497,7 +497,8 @@
                 <h2 class="card__title">Sign in</h2>
                 <p class="card__sub">Enter your credentials to continue.</p>
 
-                <form>
+                <form action="{{ route('login') }}" method="post" >
+                    @csrf
                     <div class="field">
                         <label for="email">Email address</label>
                         <div class="field__wrap">
@@ -506,7 +507,8 @@
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                                 <polyline points="22,6 12,13 2,6" />
                             </svg>
-                            <input type="email" id="email" placeholder="you@company.com" autocomplete="off">
+                            <input type="email" id="email" placeholder="you@company.com" autocomplete="off"
+                                name="email">
                         </div>
                     </div>
 
@@ -518,7 +520,8 @@
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg>
-                            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+                            <input type="password" id="password" placeholder="••••••••" name="password"
+                                autocomplete="current-password">
                         </div>
                     </div>
 
@@ -529,7 +532,7 @@
                         <a href="#" class="forgot">Forgot password?</a>
                     </div>
 
-                    <button type="button" class="btn-primary">
+                    <button  class="btn-primary">
                         Sign in
                         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
                             viewBox="0 0 24 24">
@@ -545,7 +548,7 @@
                     </div>
 
                     <p class="register-hint">
-                        Don't have an account? <a href="{{ route('register') }}">Create one</a>
+                        Don't have an account? <a href="{{ route('signUp') }}">Create one</a>
                     </p>
                 </form>
             </div>

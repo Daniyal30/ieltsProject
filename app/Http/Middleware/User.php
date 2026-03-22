@@ -20,7 +20,7 @@ class User
             return redirect()->route('login')->with('error', 'Please Login First');
         }
 
-        if (! auth()->check()->hasRole('user')) {
+        if (! auth()->user()->hasRole('user')) {
             abort(403, 'Access Denied! You are not User');
         }
 

@@ -17,6 +17,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        $this->call([
+            IconsSeeder::class,
+        ]);
+
         $roles = ['admin', 'user'];
 
         foreach ($roles as $role) {

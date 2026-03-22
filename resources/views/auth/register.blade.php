@@ -30,28 +30,29 @@
         font-family: 'DM Sans', sans-serif;
         background-color: var(--ink);
         color: var(--ink);
-        overflow: hidden;
     }
 
-    /* ── Background ── */
+    /* ── Layout ── */
     .scene {
-        position: fixed;
-        inset: 0;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
     }
 
+    /* ── LEFT PANEL ── */
     .scene__left {
         background: var(--ink);
-        position: relative;
+        position: sticky;
+        /* stays fixed while right scrolls */
+        top: 0;
+        height: 100vh;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         padding: 48px 52px;
     }
 
-    /* Decorative grid lines */
     .scene__left::before {
         content: '';
         position: absolute;
@@ -63,7 +64,6 @@
         pointer-events: none;
     }
 
-    /* Glowing orb */
     .orb {
         position: absolute;
         width: 360px;
@@ -90,48 +90,9 @@
         }
     }
 
-    .badge__dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--accent);
-        animation: blink 2s step-start infinite;
-    }
-
-    @keyframes blink {
-
-        0%,
-        100% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0;
-        }
-    }
-
-    .badge__text {
-        font-size: 12px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, .55);
-        letter-spacing: .04em;
-        text-transform: uppercase;
-    }
-
-    /* Hero headline */
     .hero {
         position: relative;
         z-index: 1;
-    }
-
-    .hero__eyebrow {
-        font-family: 'DM Sans', sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 20px;
     }
 
     .hero__heading {
@@ -155,59 +116,47 @@
         max-width: 320px;
     }
 
-    /* Stats row */
-    .stats {
-        display: flex;
-        gap: 36px;
-        position: relative;
-        z-index: 1;
-    }
-
-    .stat__value {
-        font-family: 'Syne', sans-serif;
-        font-size: 28px;
-        font-weight: 700;
-        color: #fff;
-    }
-
-    .stat__label {
-        font-size: 12px;
-        color: rgba(255, 255, 255, .35);
-        margin-top: 2px;
-        letter-spacing: .04em;
-    }
-
-    /* ── Right panel ── */
+    /* ── RIGHT PANEL ── */
     .scene__right {
         background: var(--paper);
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         padding: 48px;
-        position: relative;
+        /* This is the scrollable side */
+        overflow-y: auto;
+        min-height: 100vh;
     }
 
-    /* Subtle texture */
     .scene__right::before {
         content: '';
-        position: absolute;
-        inset: 0;
+        position: fixed;
+        /* texture stays but doesn't block scroll */
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
         background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='1' height='1' fill='%23000' opacity='0.025'/%3E%3C/svg%3E");
         pointer-events: none;
+        z-index: 0;
     }
 
+    /* ── CARD ── */
     .card {
         background: var(--surface);
         border-radius: 24px;
-        padding: 52px 48px;
+        padding: 48px 44px;
         width: 100%;
-        max-width: 420px;
+        max-width: 460px;
         position: relative;
+        z-index: 1;
         box-shadow:
             0 1px 2px rgba(0, 0, 0, .06),
             0 8px 32px rgba(0, 0, 0, .08),
             0 0 0 1px var(--border);
         animation: slideUp .55s cubic-bezier(0.22, 1, 0.36, 1) both;
+        margin: auto 0;
+        /* vertical centering when content is short */
     }
 
     @keyframes slideUp {
@@ -222,7 +171,6 @@
         }
     }
 
-    /* Accent stripe */
     .card::before {
         content: '';
         position: absolute;
@@ -246,7 +194,7 @@
     .card__title {
         font-family: sans-serif;
         font-size: 28px;
-        font-weight: 500;
+        font-weight: 700;
         color: var(--ink);
         line-height: 1.2;
         margin-bottom: 6px;
@@ -255,22 +203,22 @@
     .card__sub {
         font-size: 14px;
         color: var(--muted);
-        margin-bottom: 36px;
+        margin-bottom: 32px;
     }
 
-    /* Fields */
+    /* ── FIELDS ── */
     .field {
-        margin-bottom: 16px;
+        margin-bottom: 14px;
     }
 
     .field label {
         display: block;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 500;
-        letter-spacing: .06em;
+        letter-spacing: .08em;
         text-transform: uppercase;
         color: #555;
-        margin-bottom: 8px;
+        margin-bottom: 7px;
     }
 
     .field__wrap {
@@ -279,16 +227,28 @@
 
     .field__icon {
         position: absolute;
-        left: 16px;
+        left: 14px;
         top: 50%;
         transform: translateY(-50%);
         color: var(--muted);
         pointer-events: none;
+        display: flex;
+        align-items: center;
+        z-index: 1;
     }
 
-    .field input {
+    /* textarea icon sits at top */
+    .field__icon--top {
+        top: 14px;
+        transform: none;
+    }
+
+    /* Base style shared by ALL form controls */
+    .field input,
+    .field select,
+    .field textarea {
         width: 100%;
-        padding: 14px 16px 14px 44px;
+        padding: 13px 14px 13px 42px;
         font-family: 'DM Sans', sans-serif;
         font-size: 14px;
         color: var(--ink);
@@ -297,142 +257,85 @@
         border-radius: 12px;
         outline: none;
         transition: border-color .2s, box-shadow .2s, background .2s;
+        appearance: none;
+        -webkit-appearance: none;
     }
 
-    .field input::placeholder {
+    .field input::placeholder,
+    .field textarea::placeholder {
+        /* color: #bbb; */
+    }
+
+    .field select {
+        cursor: pointer;
+        color: var(--ink);
+    }
+
+    /* placeholder state for select */
+    .field select.placeholder {
         color: #bbb;
     }
 
-    .field input:focus {
+    .field textarea {
+        resize: vertical;
+        min-height: 90px;
+        padding-top: 13px;
+        line-height: 1.5;
+    }
+
+    /* file input special */
+    .field input[type="file"] {
+        padding: 10px 14px 10px 42px;
+        cursor: pointer;
+        font-size: 13px;
+        color: var(--muted);
+    }
+
+    .field input[type="file"]::-webkit-file-upload-button {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        background: var(--ink);
+        color: var(--accent);
+        border: none;
+        border-radius: 6px;
+        padding: 5px 12px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    /* Select dropdown arrow */
+    .select-wrap::after {
+        content: '';
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid var(--muted);
+        pointer-events: none;
+    }
+
+    /* Focus states */
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
         border-color: var(--ink);
         background: #fff;
         box-shadow: 0 0 0 3px rgba(13, 13, 18, .07);
     }
 
-    /* Row helpers */
-    .row-between {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 20px 0 28px;
+    /* ── 2-COLUMN ROW ── */
+    .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
 
-    .check-label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 13px;
-        color: var(--muted);
-        cursor: pointer;
-        user-select: none;
-    }
-
-    .check-label input[type="checkbox"] {
-        appearance: none;
-        width: 17px;
-        height: 17px;
-        border: 1.5px solid var(--border);
-        border-radius: 5px;
-        cursor: pointer;
-        position: relative;
-        transition: background .15s, border-color .15s;
-    }
-
-    /* Select arrow */
-    .select-wrap::after {
-        content: '';
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 5px solid var(--muted);
-        pointer-events: none;
-    }
-
-    .field input,
-    .field select {
-        width: 100%;
-        padding: 13px 14px 13px 42px;
-        font-family: 'Inter', sans-serif;
-        font-size: 13.5px;
-        color: var(--ink);
-        background: var(--paper);
-        border: 1.5px solid var(--border);
-        border-radius: 11px;
-        outline: none;
-        transition: border-color .2s, box-shadow .2s, background .2s;
-        appearance: none;
-    }
-
-    .field input::placeholder {
-        color: #bbb;
-    }
-
-    .field select {
-        color: #999;
-        cursor: pointer;
-    }
-
-    .field select.selected {
-        color: var(--ink);
-    }
-
-    .field input:focus,
-    .field select:focus {
-        border-color: var(--navy-light);
-        background: #fff;
-        box-shadow: 0 0 0 3px rgba(26, 58, 110, .08);
-    }
-
-    /* Select arrow */
-    .select-wrap::after {
-        content: '';
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 5px solid var(--muted);
-        pointer-events: none;
-    }
-
-    .check-label input[type="checkbox"]:checked {
-        background: var(--ink);
-        border-color: var(--ink);
-    }
-
-    .check-label input[type="checkbox"]:checked::after {
-        content: '';
-        position: absolute;
-        left: 4px;
-        top: 1px;
-        width: 5px;
-        height: 9px;
-        border: 2px solid var(--accent);
-        border-top: none;
-        border-left: none;
-        transform: rotate(45deg);
-    }
-
-    .forgot {
-        font-size: 13px;
-        color: var(--muted);
-        text-decoration: none;
-        transition: color .15s;
-    }
-
-    .forgot:hover {
-        color: var(--ink);
-    }
-
-    /* CTA button */
+    /* ── BUTTON ── */
     .btn-primary {
         display: flex;
         align-items: center;
@@ -440,6 +343,7 @@
         gap: 10px;
         width: 100%;
         padding: 16px;
+        margin-top: 8px;
         font-family: 'Syne', sans-serif;
         font-size: 14px;
         font-weight: 700;
@@ -472,12 +376,12 @@
         transform: translateX(4px);
     }
 
-    /* Divider */
+    /* ── DIVIDER ── */
     .divider {
         display: flex;
         align-items: center;
         gap: 12px;
-        margin: 24px 0;
+        margin: 22px 0;
     }
 
     .divider__line {
@@ -492,7 +396,7 @@
         letter-spacing: .06em;
     }
 
-    /* Register link */
+    /* ── HINT ── */
     .register-hint {
         text-align: center;
         font-size: 13.5px;
@@ -508,15 +412,21 @@
         transition: border-color .2s;
     }
 
+    .field__error {
+        font-size: 12px;
+        color: #e53e3e;
+        margin-top: 5px;
+        padding-left: 4px;
+    }
+
     .register-hint a:hover {
         border-color: var(--ink);
     }
 
-    /* Responsive */
+    /* ── RESPONSIVE ── */
     @media (max-width: 820px) {
         .scene {
             grid-template-columns: 1fr;
-            overflow-y: auto;
         }
 
         .scene__left {
@@ -524,7 +434,11 @@
         }
 
         .scene__right {
-            min-height: 100vh;
+            padding: 32px 20px;
+        }
+
+        .field-row {
+            grid-template-columns: 1fr;
         }
     }
 </style>
@@ -535,35 +449,27 @@
         <!-- ── Left: Brand panel ── -->
         <div class="scene__left">
             <div class="orb"></div>
-
-            <div class="badge">
-
-            </div>
-
             <div class="hero">
                 <h1 class="hero__heading">
-                    IELTS <br>Preparation,<br><em>Platform.</em>
+                    IELTS<br>Preparation,<br><em>Platform.</em>
                 </h1>
                 <p class="hero__sub">
                     Join thousands of students who have achieved their target band score with our structured,
                     expert-guided preparation system.
                 </p>
             </div>
-
-            <div class="stats">
-
-            </div>
         </div>
 
         <!-- ── Right: Form panel ── -->
         <div class="scene__right">
             <div class="card">
-                <p class="card__eyebrow">Secure access</p>
-                <h2 class="card__title">Sign in</h2>
-                <p class="card__sub">Enter your credentials to continue.</p>
+                <p class="card__eyebrow">Create account</p>
+                <h2 class="card__title">Register</h2>
+                <p class="card__sub">Fill in your details to get started.</p>
 
-                <form>
-                    <!-- Username -->
+                <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <!-- Full Name -->
                     <div class="field">
                         <label for="username">Full Name</label>
                         <div class="field__wrap">
@@ -574,8 +480,12 @@
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
                             </span>
-                            <input type="text" id="username" placeholder="e.g. Ahmed Khan">
+                            <input type="text" id="username" value="{{ old('name') }}" name="name"
+                                placeholder="e.g. Ahmed Khan" autocomplete="off">
                         </div>
+                        @error('name')
+                            <p class="field__error">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Email -->
@@ -590,53 +500,188 @@
                                     <polyline points="22,6 12,13 2,6" />
                                 </svg>
                             </span>
-                            <input type="email" id="email" placeholder="you@email.com">
+                            <input type="email" id="email" name="email" value="{{ old('email') }}"
+                                placeholder="you@email.com" autocomplete="off">
+                        </div>
+                        @error('email')
+                            <p class="field__error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Phone + DOB (2 column) -->
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="phone">Phone</label>
+                            <div class="field__wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </span>
+                                <input type="tel" id="phone" value="{{ old('phone') }}" name="phone"
+                                    placeholder="03001234567" autocomplete="off">
+                            </div>
+                            @error('phone')
+                                <p class="field__error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="field">
+                            <label for="dob">Date of Birth</label>
+                            <div class="field__wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                        <line x1="3" y1="10" x2="21" y2="10" />
+                                    </svg>
+                                </span>
+                                <input type="date" id="dob" name="date_of_birth" value="{{ old('date_of_birth') }}" autocomplete="off">
+                            </div>
+                            @error('date_of_birth')
+                                <p class="field__error">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
-                    <!-- Country -->
-                    <div class="field">
-                        <label for="country">Country</label>
-                        <div class="field__wrap select-wrap">
-                            <span class="field__icon">
-                                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    viewBox="0 0 24 24">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <line x1="2" y1="12" x2="22" y2="12" />
-                                    <path
-                                        d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                                </svg>
-                            </span>
-                            <select id="country" onchange="this.classList.add('selected')">
-                                <option value="" disabled selected>Select your country</option>
-                                <option>United States of America</option>
-                                <option>United Kingdom</option>
-                                <option>India</option>
-                                <option>Pakistan</option>
-                                <option>Germany</option>
-                                <option>Argentina</option>
-                                <option>Australia</option>
-                                <option>Canada</option>
-                            </select>
+                    <!-- Gender + Band Score (2 column) -->
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="gender">Gender</label>
+                            <div class="field__wrap select-wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="8" r="4" />
+                                        <path d="M12 14v7" />
+                                        <path d="M9 18h6" />
+                                    </svg>
+                                </span>
+                                <select id="gender" name="gender" class="placeholder"
+                                    onchange="this.classList.remove('placeholder')">
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male</option>
+                                    <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Female
+                                    </option>
+                                </select>
+                            </div>
+                            @error('gender')
+                                <p class="field__error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="field">
+                            <label for="band_score">Target Band</label>
+                            <div class="field__wrap select-wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                </span>
+                                <select id="band_score" name="target_band_score" class="placeholder"
+                                    onchange="this.classList.remove('placeholder')">
+                                    <option value="" disabled selected>Score</option>
+                                    <option value="5" {{ old('target_band_score') == '5' ? 'selected' : '' }}>5.0</option>
+                                    <option value="5.5" {{ old('target_band_score') == '5.5' ? 'selected' : '' }}>5.5
+                                    </option>
+                                    <option value="6" {{ old('target_band_score') == '6' ? 'selected' : '' }}>6.0</option>
+                                    <option value="6.5" {{ old('target_band_score') == '6.5' ? 'selected' : '' }}>6.5
+                                    </option>
+                                    <option value="7" {{ old('target_band_score') == '7' ? 'selected' : '' }}>7.0</option>
+                                    <option value="7.5" {{ old('target_band_score') == '7.5' ? 'selected' : '' }}>7.5
+                                    </option>
+                                    <option value="8" {{ old('target_band_score') == '8' ? 'selected' : '' }}>8.0</option>
+                                    <option value="8.5" {{ old('target_band_score') == '8.5' ? 'selected' : '' }}>8.5
+                                    </option>
+                                    <option value="9" {{ old('target_band_score') == '9' ? 'selected' : '' }}>9.0</option>
+                                </select>
+                            </div>
+                            @error('target_band_score')
+                                <p class="field__error">{{ $message }}</p>
+                            @enderror
                         </div>
                     </div>
 
-                    <!-- Password -->
+                    <!-- Profile Image -->
                     <div class="field">
-                        <label for="password">Password</label>
+                        <label for="profile_image">Profile Image</label>
                         <div class="field__wrap">
                             <span class="field__icon">
                                 <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
                                     viewBox="0 0 24 24">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <polyline points="21 15 16 10 5 21" />
                                 </svg>
                             </span>
-                            <input type="password" id="password" placeholder="Min. 8 characters">
+                            <input type="file" id="profile_image" name="profile_image" accept="image/*">
+                        </div>
+                        @error('profile_image')
+                            <p class="field__error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Address -->
+                    <div class="field">
+                        <label for="address">Address</label>
+                        <div class="field__wrap">
+                            <span class="field__icon field__icon--top">
+                                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <textarea id="address" name="address"
+                                placeholder="Street, City, Country">{{ old('address') }}</textarea>
+                        </div>
+                        @error('address')
+                            <p class="field__error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Password + Confirm (2 column) -->
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <div class="field__wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                </span>
+                                <input type="password" id="password" name="password" placeholder="Min. 8 chars">
+                            </div>
+                            @error('password')
+                                <p class="field__error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div class="field">
+                            <label for="password_confirmation">Confirm</label>
+                            <div class="field__wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                </span>
+                                <input type="password" id="password_confirmation" name="password_confirmation"
+                                    placeholder="Re-enter">
+                            </div>
                         </div>
                     </div>
 
-                    <button type="button" class="btn-primary">
+                    <button type="submit" class="btn-primary">
                         Create Account
                         <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2"
                             viewBox="0 0 24 24">
@@ -652,8 +697,9 @@
                     </div>
 
                     <p class="register-hint">
-                        Already have an account? <a href="{{ route('login') }}">Login</a>
+                        Already have an account? <a href="{{ route('signIn') }}">Login</a>
                     </p>
+
                 </form>
             </div>
         </div>
