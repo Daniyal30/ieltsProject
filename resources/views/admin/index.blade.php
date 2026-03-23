@@ -651,7 +651,7 @@
             <nav class="sidebar__nav">
                 <div class="nav-section-label">Main</div>
 
-                <a href="#" class="nav-item active">
+                <a href="{{ route('admin.index') }}" class="nav-item active">
                     <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <rect x="3" y="3" width="7" height="7" rx="1"/>
                         <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -661,20 +661,12 @@
                     <span class="nav-label">Dashboard</span>
                 </a>
 
-                <a href="#" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                    </svg>
-                    <span class="nav-label">Charts</span>
-                </a>
-
-                <a href="#" class="nav-item">
+                <a href="{{ route('sidebar.index') }}" class="nav-item">
                     <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <rect x="3" y="3" width="18" height="18" rx="2"/>
                         <path d="M3 9h18M3 15h18M9 3v18"/>
                     </svg>
-                    <span class="nav-label">Tables</span>
-                    <span class="nav-badge">4</span>
+                    <span class="nav-label">Sidebar</span>
                 </a>
 
                 <div class="nav-section-label">UI Elements</div>
