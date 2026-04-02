@@ -14,33 +14,33 @@ class UserController extends Controller
         return view('auth.register');
     }
 
-public function register(Request $request)
-{
-    $credentials = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'phone' => 'required',
-        'date_of_birth' => 'required|date',
-        'gender' => 'required',
-        'profile_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-        'target_band_score' => 'required',
-        'address' => 'nullable',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
+    public function register(Request $request)
+    {
+        $credentials = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required',
+            'date_of_birth' => 'required|date',
+            'gender' => 'required',
+            'profile_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'target_band_score' => 'required',
+            'address' => 'nullable',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
 
-    if ($request->hasFile('profile_image')) {
-        $path = $request->file('profile_image')->store('profile_image', 'public');
-        $credentials['profile_image'] = $path;
+        if ($request->hasFile('profile_image')) {
+            $path = $request->file('profile_image')->store('profile_image', 'public');
+            $credentials['profile_image'] = $path;
+        }
+
+        $credentials['password'] = Hash::make($request->password);
+
+        $user = User::create($credentials);
+
+        $user->assignRole('user');
+
+        return redirect()->route('signIn');
     }
-
-    $credentials['password'] = Hash::make($request->password);
-
-    $user = User::create($credentials);
-
-    $user->assignRole('user');
-
-    return redirect()->route('signIn');
-}
 
     public function signIn()
     {
@@ -49,7 +49,6 @@ public function register(Request $request)
 
     public function login(Request $request)
     {
-
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -67,6 +66,9 @@ public function register(Request $request)
                 return redirect()->route('user.index');
             }
         }
+        return back()->withErrors([
+            'error' => 'Email or Password incorrect',
+        ])->withInput($request->only('email'));
     }
 
     public function logout(Request $request)

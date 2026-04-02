@@ -309,6 +309,15 @@
         box-shadow: 0 0 0 3px rgba(13, 13, 18, .07);
     }
 
+    /* Error message */
+    .field .text-danger {
+        display: block;
+        font-size: 12px;
+        color: #dc2626;
+        margin-top: 6px;
+        padding-left: 4px;
+    }
+
     /* Row helpers */
     .row-between {
         display: flex;
@@ -496,11 +505,17 @@
                 <p class="card__eyebrow">Secure access</p>
                 <h2 class="card__title">Sign in</h2>
                 <p class="card__sub">Enter your credentials to continue.</p>
-
-                <form action="{{ route('login') }}" method="post" >
+                @if ($errors->has('error'))
+                    <div class="text-danger mb-3">
+                        {{ $errors->first('error') }}
+                    </div>
+                @endif
+                <form action="{{ route('login') }}" method="post">
                     @csrf
+
+                    {{-- Email field --}}
                     <div class="field">
-                        <label for="email">Email address</label>
+                        <label for="email">Email address</label><span class="text-danger">*</span>
                         <div class="field__wrap">
                             <svg class="field__icon" width="16" height="16" fill="none" stroke="currentColor"
                                 stroke-width="1.8" viewBox="0 0 24 24">
@@ -510,10 +525,14 @@
                             <input type="email" id="email" placeholder="you@company.com" autocomplete="off"
                                 name="email">
                         </div>
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
+                    {{-- Password field --}}
                     <div class="field">
-                        <label for="password">Password</label>
+                        <label for="password">Password <span class="text-danger">*</span></label>
                         <div class="field__wrap">
                             <svg class="field__icon" width="16" height="16" fill="none" stroke="currentColor"
                                 stroke-width="1.8" viewBox="0 0 24 24">
@@ -523,6 +542,9 @@
                             <input type="password" id="password" placeholder="••••••••" name="password"
                                 autocomplete="current-password">
                         </div>
+                        @error('password')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="row-between">
@@ -532,7 +554,7 @@
                         <a href="#" class="forgot">Forgot password?</a>
                     </div>
 
-                    <button  class="btn-primary">
+                    <button class="btn-primary">
                         Sign in
                         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"
                             viewBox="0 0 24 24">

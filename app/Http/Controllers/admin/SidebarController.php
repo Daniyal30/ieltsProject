@@ -63,9 +63,11 @@ class SidebarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Sidebar $sidebar)
     {
-        //
+        $icons = Icon::all();
+
+        return view('admin.pages.sidebar.edit', compact('sidebar', 'icons'));
     }
 
     /**
@@ -79,8 +81,22 @@ class SidebarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Sidebar $sidebar)
     {
-        //
+        $sidebar->delete();
+
+        return redirect()->route('sidebar.index')->with('success', 'Sidebar Deleted Successfully');
+    }
+
+    public function statusUpdate(Sidebar $sidebar)
+    {
+        // toggle (0 → 1, 1 → 0)
+        $sidebar->is_active = $sidebar->is_active == 1 ? 0 : 1;
+        $sidebar->save();
+
+        return response()->json([
+            'success' => true,
+            'is_active' => $sidebar->is_active,
+        ]);
     }
 }

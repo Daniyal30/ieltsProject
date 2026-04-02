@@ -1361,14 +1361,15 @@
                                             <div class="action-group">
 
                                                 {{-- Edit Button --}}
-                                                <button class="act-btn edit" title="Edit"
-                                                    onclick="openEditModal({{ $sidebar->id }}, '{{ addslashes($sidebar->title) }}', '{{ addslashes($sidebar->url) }}', '{{ addslashes($sidebar->icon) }}', {{ $sidebar->order }})">
+
+                                                <a href="{{ route('sidebar.edit', $sidebar->id) }}" class="act-btn edit"
+                                                    title="Edit">
                                                     <svg width="13" height="13" fill="none" stroke="var(--muted)"
                                                         stroke-width="2" viewBox="0 0 24 24">
                                                         <path d="M12 20h9" />
                                                         <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                                                     </svg>
-                                                </button>
+                                                </a>
 
                                                 {{-- Toggle Status Button --}}
                                                 <button class="act-btn toggle-btn" title="Toggle Status"
@@ -1381,7 +1382,7 @@
                                                 </button>
 
                                                 {{-- Delete Button --}}
-                                                <button class="act-btn del" title="Delete"
+                                                <a href="{{ route('sidebar.destroy', $sidebar->id) }}"  class="act-btn del" title="Delete"
                                                     onclick="openModal(this, {{ $sidebar->id }})">
                                                     <svg width="13" height="13" fill="none" stroke="var(--muted)"
                                                         stroke-width="2" viewBox="0 0 24 24">
@@ -1390,7 +1391,7 @@
                                                         <path d="M10 11v6M14 11v6" />
                                                         <path d="M9 6V4h6v2" />
                                                     </svg>
-                                                </button>
+                                                </a>
 
                                             </div>
                                         </td>
@@ -1520,7 +1521,7 @@
                 .then(data => {
                     const row = btn.closest('tr');
                     const pill = row.querySelector('.status-pill');
-                    const isActive = data.is_active == 1;
+                    const isActive = data.is_active == 0;  // 0 = active (tumhari logic)
 
                     row.dataset.status = isActive ? 'active' : 'inactive';
                     pill.className = 'status-pill ' + (isActive ? 'active' : 'inactive');
@@ -1534,8 +1535,18 @@
         // ── Stats counter ──
         function updateStats() {
             const rows = document.querySelectorAll('#tableBody tr');
-            const activeN = [...rows].filter(r => r.dataset.status === 0 && r.style.display !== 'none').length;
-            const inactiveN = [...rows].filter(r => r.dataset.status === 1 && r.style.display !== 'none').length;
+            let activeN = 0;
+            let inactiveN = 0;
+
+            rows.forEach(r => {
+                if (r.style.display === 'none') return;
+                if (r.dataset.status === 'active') activeN++;
+                if (r.dataset.status === 'inactive') inactiveN++;
+            });
+
+            document.getElementById('statActive').textContent = activeN;
+            document.getElementById('statInactive').textContent = inactiveN;
+            document.getElementById('statTotal').textContent = activeN + inactiveN;
         }
 
         // ── Delete Modal ──

@@ -20,6 +20,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         return view('admin.index');
     })->name('admin.index');
     Route::resource('/sidebar', SidebarController::class);
+    Route::post('/admin/sidebar/{sidebar}/toggle', [SidebarController::class, 'statusUpdate'])->name('sidebar.toggle');
     Route::get('/index', [HomeController::class, 'index'])->name('index');
 });
 

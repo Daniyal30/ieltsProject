@@ -271,10 +271,6 @@
         color: var(--ink);
     }
 
-    /* placeholder state for select */
-    .field select.placeholder {
-        color: #bbb;
-    }
 
     .field textarea {
         resize: vertical;
