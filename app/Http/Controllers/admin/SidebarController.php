@@ -14,7 +14,15 @@ class SidebarController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.sidebar.index');
+        $sidebars = Sidebar::latest()->paginate(10);
+
+        $totalitems = Sidebar::count();
+
+        $StatusActive = Sidebar::where('is_active', '0')->count();
+
+        $StatusInactive = Sidebar::where('is_active', '1')->count();
+
+        return view('admin.pages.sidebar.index', compact('sidebars', 'totalitems', 'StatusActive', 'StatusInactive'));
     }
 
     /**

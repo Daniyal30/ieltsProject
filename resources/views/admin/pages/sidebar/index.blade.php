@@ -480,7 +480,7 @@
         /* ── Stats Row ── */
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 14px;
             margin-bottom: 20px;
             animation: slideUp .45s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -1225,7 +1225,7 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="mini-stat__val" id="statTotal">6</div>
+                            <div class="mini-stat__val" id="statTotal">{{ $totalitems }}</div>
                             <div class="mini-stat__label">Total Items</div>
                         </div>
                     </div>
@@ -1237,7 +1237,7 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="mini-stat__val" id="statActive">4</div>
+                            <div class="mini-stat__val" id="statActive">{{ $StatusActive }}</div>
                             <div class="mini-stat__label">Active</div>
                         </div>
                     </div>
@@ -1251,22 +1251,11 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="mini-stat__val" id="statInactive">2</div>
+                            <div class="mini-stat__val" id="statInactive">{{ $StatusInactive }}</div>
                             <div class="mini-stat__label">Inactive</div>
                         </div>
                     </div>
-                    <div class="mini-stat">
-                        <div class="mini-stat__icon blue">
-                            <svg width="16" height="16" fill="none" stroke="#1a56b0" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="mini-stat__val">2</div>
-                            <div class="mini-stat__label">Sections</div>
-                        </div>
-                    </div>
+
                 </div>
 
                 @if(session('success'))
@@ -1325,258 +1314,100 @@
                                 </tr>
                             </thead>
                             <tbody id="tableBody">
-                                <!-- Row 1 -->
-                                <tr data-status="active">
-                                    <td><input type="checkbox" style="cursor:pointer;accent-color:var(--ink);"></td>
-                                    <td><span class="order-badge">1</span></td>
-                                    <td style="font-weight:500;">Dashboard</td>
-                                    <td><span class="url-cell">/dashboard</span></td>
-                                    <td><span class="icon-chip">
-                                            <svg width="11" height="11" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <rect x="3" y="3" width="7" height="7" rx="1" />
-                                                <rect x="14" y="3" width="7" height="7" rx="1" />
-                                                <rect x="3" y="14" width="7" height="7" rx="1" />
-                                                <rect x="14" y="14" width="7" height="7" rx="1" />
-                                            </svg>
-                                            dashboard
-                                        </span></td>
-                                    <td><span class="status-pill active">Active</span></td>
-                                    <td style="color:var(--muted);font-size:12px;">12 Jan 2025</td>
-                                    <td>
-                                        <div class="action-group">
-                                            <button class="act-btn edit" title="Edit">
-                                                <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <path d="M12 20h9" />
-                                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                                </svg>
-                                            </button>
-                                            <button class="act-btn toggle-btn" title="Toggle Status"
-                                                onclick="toggleStatus(this)">
-                                                <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="20 6 9 17 4 12" />
-                                                </svg>
-                                            </button>
-                                            <button class="act-btn del" title="Delete" onclick="openModal(this)">
-                                                <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path d="M19 6l-1 14H6L5 6" />
-                                                    <path d="M10 11v6M14 11v6" />
-                                                    <path d="M9 6V4h6v2" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Row 2 -->
-                                <tr data-status="active">
-                                    <td><input type="checkbox" style="cursor:pointer;accent-color:var(--ink);"></td>
-                                    <td><span class="order-badge">2</span></td>
-                                    <td style="font-weight:500;">Charts</td>
-                                    <td><span class="url-cell">/charts</span></td>
-                                    <td><span class="icon-chip">
-                                            <svg width="11" height="11" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                                            </svg>
-                                            chart
-                                        </span></td>
-                                    <td><span class="status-pill active">Active</span></td>
-                                    <td style="color:var(--muted);font-size:12px;">14 Jan 2025</td>
-                                    <td>
-                                        <div class="action-group">
-                                            <button class="act-btn edit" title="Edit"><svg width="13" height="13"
-                                                    fill="none" stroke="var(--muted)" stroke-width="2"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M12 20h9" />
-                                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                                </svg></button>
-                                            <button class="act-btn toggle-btn" title="Toggle Status"
-                                                onclick="toggleStatus(this)"><svg width="13" height="13" fill="none"
-                                                    stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="20 6 9 17 4 12" />
-                                                </svg></button>
-                                            <button class="act-btn del" title="Delete" onclick="openModal(this)"><svg
-                                                    width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path d="M19 6l-1 14H6L5 6" />
-                                                    <path d="M10 11v6M14 11v6" />
-                                                    <path d="M9 6V4h6v2" />
-                                                </svg></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Row 3 -->
-                                <tr data-status="active">
-                                    <td><input type="checkbox" style="cursor:pointer;accent-color:var(--ink);"></td>
-                                    <td><span class="order-badge">3</span></td>
-                                    <td style="font-weight:500;">Tables</td>
-                                    <td><span class="url-cell">/tables</span></td>
-                                    <td><span class="icon-chip">
-                                            <svg width="11" height="11" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <rect x="3" y="3" width="18" height="18" rx="2" />
-                                                <path d="M3 9h18M9 3v18" />
-                                            </svg>
-                                            table
-                                        </span></td>
-                                    <td><span class="status-pill active">Active</span></td>
-                                    <td style="color:var(--muted);font-size:12px;">14 Jan 2025</td>
-                                    <td>
-                                        <div class="action-group">
-                                            <button class="act-btn edit" title="Edit"><svg width="13" height="13"
-                                                    fill="none" stroke="var(--muted)" stroke-width="2"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M12 20h9" />
-                                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                                </svg></button>
-                                            <button class="act-btn toggle-btn" title="Toggle Status"
-                                                onclick="toggleStatus(this)"><svg width="13" height="13" fill="none"
-                                                    stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="20 6 9 17 4 12" />
-                                                </svg></button>
-                                            <button class="act-btn del" title="Delete" onclick="openModal(this)"><svg
-                                                    width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path d="M19 6l-1 14H6L5 6" />
-                                                    <path d="M10 11v6M14 11v6" />
-                                                    <path d="M9 6V4h6v2" />
-                                                </svg></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Row 4 -->
-                                <tr data-status="active">
-                                    <td><input type="checkbox" style="cursor:pointer;accent-color:var(--ink);"></td>
-                                    <td><span class="order-badge">4</span></td>
-                                    <td style="font-weight:500;">Forms</td>
-                                    <td><span class="url-cell">/forms</span></td>
-                                    <td><span class="icon-chip">
-                                            <svg width="11" height="11" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <path d="M12 20h9" />
-                                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                            </svg>
-                                            forms
-                                        </span></td>
-                                    <td><span class="status-pill active">Active</span></td>
-                                    <td style="color:var(--muted);font-size:12px;">16 Jan 2025</td>
-                                    <td>
-                                        <div class="action-group">
-                                            <button class="act-btn edit" title="Edit"><svg width="13" height="13"
-                                                    fill="none" stroke="var(--muted)" stroke-width="2"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M12 20h9" />
-                                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                                </svg></button>
-                                            <button class="act-btn toggle-btn" title="Toggle Status"
-                                                onclick="toggleStatus(this)"><svg width="13" height="13" fill="none"
-                                                    stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="20 6 9 17 4 12" />
-                                                </svg></button>
-                                            <button class="act-btn del" title="Delete" onclick="openModal(this)"><svg
-                                                    width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path d="M19 6l-1 14H6L5 6" />
-                                                    <path d="M10 11v6M14 11v6" />
-                                                    <path d="M9 6V4h6v2" />
-                                                </svg></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Row 5 - Inactive -->
-                                <tr data-status="inactive">
-                                    <td><input type="checkbox" style="cursor:pointer;accent-color:var(--ink);"></td>
-                                    <td><span class="order-badge">5</span></td>
-                                    <td style="font-weight:500;">Icons</td>
-                                    <td><span class="url-cell">/icons</span></td>
-                                    <td><span class="icon-chip">
-                                            <svg width="11" height="11" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <circle cx="12" cy="12" r="2" />
-                                                <circle cx="19" cy="12" r="2" />
-                                                <circle cx="5" cy="12" r="2" />
-                                            </svg>
-                                            icons
-                                        </span></td>
-                                    <td><span class="status-pill inactive">Inactive</span></td>
-                                    <td style="color:var(--muted);font-size:12px;">18 Jan 2025</td>
-                                    <td>
-                                        <div class="action-group">
-                                            <button class="act-btn edit" title="Edit"><svg width="13" height="13"
-                                                    fill="none" stroke="var(--muted)" stroke-width="2"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M12 20h9" />
-                                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                                </svg></button>
-                                            <button class="act-btn toggle-btn" title="Toggle Status"
-                                                onclick="toggleStatus(this)"><svg width="13" height="13" fill="none"
-                                                    stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="20 6 9 17 4 12" />
-                                                </svg></button>
-                                            <button class="act-btn del" title="Delete" onclick="openModal(this)"><svg
-                                                    width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path d="M19 6l-1 14H6L5 6" />
-                                                    <path d="M10 11v6M14 11v6" />
-                                                    <path d="M9 6V4h6v2" />
-                                                </svg></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!-- Row 6 - Inactive -->
-                                <tr data-status="inactive">
-                                    <td><input type="checkbox" style="cursor:pointer;accent-color:var(--ink);"></td>
-                                    <td><span class="order-badge">6</span></td>
-                                    <td style="font-weight:500;">Reports</td>
-                                    <td><span class="url-cell">/reports/analytics</span></td>
-                                    <td><span class="icon-chip">
-                                            <svg width="11" height="11" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                                            </svg>
-                                            reports
-                                        </span></td>
-                                    <td><span class="status-pill inactive">Inactive</span></td>
-                                    <td style="color:var(--muted);font-size:12px;">20 Jan 2025</td>
-                                    <td>
-                                        <div class="action-group">
-                                            <button class="act-btn edit" title="Edit"><svg width="13" height="13"
-                                                    fill="none" stroke="var(--muted)" stroke-width="2"
-                                                    viewBox="0 0 24 24">
-                                                    <path d="M12 20h9" />
-                                                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                                </svg></button>
-                                            <button class="act-btn toggle-btn" title="Toggle Status"
-                                                onclick="toggleStatus(this)"><svg width="13" height="13" fill="none"
-                                                    stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <polyline points="20 6 9 17 4 12" />
-                                                </svg></button>
-                                            <button class="act-btn del" title="Delete" onclick="openModal(this)"><svg
-                                                    width="13" height="13" fill="none" stroke="var(--muted)"
-                                                    stroke-width="2" viewBox="0 0 24 24">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path d="M19 6l-1 14H6L5 6" />
-                                                    <path d="M10 11v6M14 11v6" />
-                                                    <path d="M9 6V4h6v2" />
-                                                </svg></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @forelse ($sidebars as $sidebar)
+                                    <tr data-status="{{ $sidebar->is_active == 0 ? 'active' : 'inactive' }}">
+
+                                        {{-- Checkbox --}}
+                                        <td>
+                                            <input type="checkbox" style="cursor:pointer;accent-color:var(--ink);">
+                                        </td>
+
+                                        {{-- Order --}}
+                                        <td>
+                                            <span class="order-badge">{{ $sidebar->order }}</span>
+                                        </td>
+
+                                        {{-- Title --}}
+                                        <td style="font-weight:500;">{{ $sidebar->title }}</td>
+
+                                        {{-- URL --}}
+                                        <td>
+                                            <span class="url-cell">{{ $sidebar->url }}</span>
+                                        </td>
+
+                                        {{-- Icon --}}
+                                        <td>
+                                            <span class="icon-chip">
+                                                <i class="{{ $sidebar->icon }}"></i>
+                                                {{ $sidebar->icon }}
+                                            </span>
+                                        </td>
+
+                                        {{-- Status --}}
+                                        <td>
+                                            <span
+                                                class="status-pill {{ $sidebar->is_active == 0 ? 'active' : 'inactive' }}">
+                                                {{ $sidebar->is_active == 0 ? 'Active' : 'Inactive' }}
+                                            </span>
+                                        </td>
+
+                                        {{-- Date --}}
+                                        <td style="color:var(--muted);font-size:12px;">
+                                            {{ $sidebar->created_at->format('d M Y') }}
+                                        </td>
+
+                                        {{-- Actions --}}
+                                        <td>
+                                            <div class="action-group">
+
+                                                {{-- Edit Button --}}
+                                                <button class="act-btn edit" title="Edit"
+                                                    onclick="openEditModal({{ $sidebar->id }}, '{{ addslashes($sidebar->title) }}', '{{ addslashes($sidebar->url) }}', '{{ addslashes($sidebar->icon) }}', {{ $sidebar->order }})">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <path d="M12 20h9" />
+                                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                                    </svg>
+                                                </button>
+
+                                                {{-- Toggle Status Button --}}
+                                                <button class="act-btn toggle-btn" title="Toggle Status"
+                                                    onclick="toggleStatus(this, {{ $sidebar->id }})">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <circle cx="12" cy="12" r="10" />
+                                                        <polyline points="20 6 9 17 4 12" />
+                                                    </svg>
+                                                </button>
+
+                                                {{-- Delete Button --}}
+                                                <button class="act-btn del" title="Delete"
+                                                    onclick="openModal(this, {{ $sidebar->id }})">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <polyline points="3 6 5 6 21 6" />
+                                                        <path d="M19 6l-1 14H6L5 6" />
+                                                        <path d="M10 11v6M14 11v6" />
+                                                        <path d="M9 6V4h6v2" />
+                                                    </svg>
+                                                </button>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="8" style="text-align:center; padding: 2rem; color:var(--muted);">
+                                            No sidebar items found.
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
+
+                            {{-- Pagination --}}
+                            <div style="margin-top:1rem;">
+                                {{ $sidebars->links() }}
+                            </div>
                         </table>
 
                         <!-- Empty State -->
@@ -1642,6 +1473,7 @@
 
     <script>
         let rowToDelete = null;
+        let deleteId = null;
 
         // ── Filter (search + dropdown) ──
         function filterTable() {
@@ -1674,66 +1506,100 @@
                 .forEach(cb => cb.checked = master.checked);
         }
 
-        // ── Toggle Active / Inactive ──
-        function toggleStatus(btn) {
-            const row = btn.closest('tr');
-            const pill = row.querySelector('.status-pill');
+        // ── Toggle Active / Inactive (AJAX) ──
+        function toggleStatus(btn, id) {
+            fetch(`/admin/sidebar/${id}/toggle`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+            })
+                .then(r => r.json())
+                .then(data => {
+                    const row = btn.closest('tr');
+                    const pill = row.querySelector('.status-pill');
+                    const isActive = data.is_active == 1;
 
-            if (row.dataset.status === 'active') {
-                row.dataset.status = 'inactive';
-                pill.className = 'status-pill inactive';
-                pill.textContent = 'Inactive';
-            } else {
-                row.dataset.status = 'active';
-                pill.className = 'status-pill active';
-                pill.textContent = 'Active';
-            }
-            updateStats();
+                    row.dataset.status = isActive ? 'active' : 'inactive';
+                    pill.className = 'status-pill ' + (isActive ? 'active' : 'inactive');
+                    pill.textContent = isActive ? 'Active' : 'Inactive';
+
+                    updateStats();
+                })
+                .catch(err => console.error('Toggle failed:', err));
         }
 
         // ── Stats counter ──
         function updateStats() {
             const rows = document.querySelectorAll('#tableBody tr');
-            const activeN = [...rows].filter(r => r.dataset.status === 'active' && r.style.display !== 'none').length;
-            const inactiveN = [...rows].filter(r => r.dataset.status === 'inactive' && r.style.display !== 'none').length;
-            document.getElementById('statActive').textContent = activeN;
-            document.getElementById('statInactive').textContent = inactiveN;
-            document.getElementById('statTotal').textContent = rows.length;
+            const activeN = [...rows].filter(r => r.dataset.status === 0 && r.style.display !== 'none').length;
+            const inactiveN = [...rows].filter(r => r.dataset.status === 1 && r.style.display !== 'none').length;
         }
 
         // ── Delete Modal ──
-        function openModal(btn) {
+        function openModal(btn, id) {
             rowToDelete = btn.closest('tr');
+            deleteId = id;
             document.getElementById('deleteModal').classList.add('open');
         }
 
         function closeModal() {
             document.getElementById('deleteModal').classList.remove('open');
             rowToDelete = null;
+            deleteId = null;
         }
 
         function confirmDelete() {
-            if (rowToDelete) {
-                rowToDelete.style.transition = 'opacity .3s, transform .3s';
-                rowToDelete.style.opacity = '0';
-                rowToDelete.style.transform = 'translateX(20px)';
-                setTimeout(() => {
-                    rowToDelete.remove();
-                    updateStats();
-                    filterTable();
-                }, 300);
-            }
+            if (!rowToDelete || !deleteId) return;
+
+            // Animate row out first, then submit DELETE to server
+            rowToDelete.style.transition = 'opacity .3s, transform .3s';
+            rowToDelete.style.opacity = '0';
+            rowToDelete.style.transform = 'translateX(20px)';
+
+            setTimeout(() => {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/admin/sidebar/${deleteId}`;
+                form.innerHTML = `
+                @csrf
+                <input type="hidden" name="_method" value="DELETE">
+            `;
+                document.body.appendChild(form);
+                form.submit();
+            }, 300);
+
             closeModal();
         }
 
-        // Close modal on overlay click
+        function openEditModal(id, title, url, icon, order) {
+            document.getElementById('editSidebarId').value = id;
+            document.getElementById('editTitle').value = title;
+            document.getElementById('editUrl').value = url;
+            document.getElementById('editIcon').value = icon;
+            document.getElementById('editOrder').value = order;
+
+            document.getElementById('editForm').action = `/admin/sidebar/${id}`;
+            document.getElementById('editModal').classList.add('open'); // adjust if your modal uses a different method
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('open');
+        }
+
         document.getElementById('deleteModal').addEventListener('click', function (e) {
             if (e.target === this) closeModal();
         });
-    </script>
 
-    <script>
-        // Auto hide after 4 seconds
+        const editModalEl = document.getElementById('editModal');
+        if (editModalEl) {
+            editModalEl.addEventListener('click', function (e) {
+                if (e.target === this) closeEditModal();
+            });
+        }
+
         setTimeout(() => {
             const alert = document.getElementById('successAlert');
             if (alert) {
@@ -1744,6 +1610,8 @@
             }
         }, 4000);
     </script>
+
+
 </body>
 
 </html>
