@@ -468,7 +468,7 @@
     /* ── Form Fields ── */
     .form-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 
@@ -633,9 +633,9 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        padding-top: 28px;
+        padding-top: 12px;
         border-top: 1px solid var(--border);
-        margin-top: 28px;
+        margin-top: 12px;
     }
 
     .btn-primary {
@@ -984,7 +984,7 @@
                                 </div>
 
                                 <!-- Order -->
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="order">Order <span class="required">*</span></label>
                                     <div class="input-wrap">
                                         <span class="input-icon">
@@ -1007,7 +1007,7 @@
                                         <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
                                     @enderror
 
-                                </div>
+                                </div> --}}
 
                                 <!-- Icon -->
                                 <div class="form-group">
@@ -1049,11 +1049,13 @@
                                             <span class="toggle-hint">Enable this item to be shown in the sidebar
                                                 navigation.</span>
                                         </div>
+
                                         <label class="toggle">
-                                            <input type="checkbox" name="is_active" id="is_active" checked>
+                                            <input type="checkbox" name="is_active" value="1" {{ $sidebar->is_active == 0 ? 'checked' : '' }}>
                                             <div class="toggle-track"></div>
                                             <div class="toggle-thumb"></div>
                                         </label>
+
                                     </div>
                                 </div>
 

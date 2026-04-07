@@ -76,8 +76,17 @@
     }
 
     @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50%       { transform: scale(1.1); opacity: 0.6; }
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 0.6;
+        }
     }
 
     /* Logo */
@@ -151,8 +160,15 @@
     }
 
     @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50%       { opacity: 0; }
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
     }
 
     /* Nav */
@@ -164,7 +180,9 @@
         overflow-y: auto;
     }
 
-    .sidebar__nav::-webkit-scrollbar { width: 0; }
+    .sidebar__nav::-webkit-scrollbar {
+        width: 0;
+    }
 
     .nav-section-label {
         font-size: 10px;
@@ -188,15 +206,22 @@
         text-decoration: none;
     }
 
-    .nav-item:hover { background: rgba(255, 255, 255, .05); }
+    .nav-item:hover {
+        background: rgba(255, 255, 255, .05);
+    }
 
     .nav-item.active {
         background: rgba(200, 240, 78, .12);
         border: 1px solid rgba(200, 240, 78, .2);
     }
 
-    .nav-item.active .nav-icon { color: var(--accent); }
-    .nav-item.active .nav-label { color: #fff; }
+    .nav-item.active .nav-icon {
+        color: var(--accent);
+    }
+
+    .nav-item.active .nav-label {
+        color: #fff;
+    }
 
     .nav-icon {
         width: 18px;
@@ -244,8 +269,14 @@
         width: 100%;
     }
 
-    .signout-btn:hover { background: rgba(255, 80, 80, .08); }
-    .signout-btn .nav-label { color: rgba(255, 255, 255, .3); font-size: 13px; }
+    .signout-btn:hover {
+        background: rgba(255, 80, 80, .08);
+    }
+
+    .signout-btn .nav-label {
+        color: rgba(255, 255, 255, .3);
+        font-size: 13px;
+    }
 
     /* ── Main panel ── */
     .main-panel {
@@ -269,7 +300,10 @@
         box-shadow: 0 1px 0 var(--border);
     }
 
-    .topbar__left { display: flex; flex-direction: column; }
+    .topbar__left {
+        display: flex;
+        flex-direction: column;
+    }
 
     .topbar__eyebrow {
         font-size: 10px;
@@ -333,7 +367,9 @@
         width: 160px;
     }
 
-    .search-box input::placeholder { color: var(--muted); }
+    .search-box input::placeholder {
+        color: var(--muted);
+    }
 
     .icon-btn {
         width: 38px;
@@ -349,7 +385,10 @@
         transition: background .2s, border-color .2s;
     }
 
-    .icon-btn:hover { background: #fff; border-color: #ccc; }
+    .icon-btn:hover {
+        background: #fff;
+        border-color: #ccc;
+    }
 
     .notif-dot {
         position: absolute;
@@ -369,9 +408,18 @@
         padding: 28px 32px;
     }
 
-    .content::-webkit-scrollbar { width: 6px; }
-    .content::-webkit-scrollbar-track { background: transparent; }
-    .content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .content::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .content::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
+    }
 
     /* ── Stat Cards ── */
     .stats-grid {
@@ -389,18 +437,44 @@
         animation: slideUp .5s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
-    .stat-card:nth-child(1) { animation-delay: .05s; }
-    .stat-card:nth-child(2) { animation-delay: .12s; }
-    .stat-card:nth-child(3) { animation-delay: .19s; }
-
-    @keyframes slideUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
+    .stat-card:nth-child(1) {
+        animation-delay: .05s;
     }
 
-    .stat-card.danger  { background: #150909; border: 1px solid rgba(220, 80, 80, .2); }
-    .stat-card.info    { background: #060c18; border: 1px solid rgba(55, 138, 221, .2); }
-    .stat-card.success { background: #060f07; border: 1px solid rgba(99, 153, 34, .2); }
+    .stat-card:nth-child(2) {
+        animation-delay: .12s;
+    }
+
+    .stat-card:nth-child(3) {
+        animation-delay: .19s;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .stat-card.danger {
+        background: #150909;
+        border: 1px solid rgba(220, 80, 80, .2);
+    }
+
+    .stat-card.info {
+        background: #060c18;
+        border: 1px solid rgba(55, 138, 221, .2);
+    }
+
+    .stat-card.success {
+        background: #060f07;
+        border: 1px solid rgba(99, 153, 34, .2);
+    }
 
     /* Grid lines inside cards */
     .stat-card::after {
@@ -424,9 +498,17 @@
         pointer-events: none;
     }
 
-    .stat-card.danger  .stat-card__orb { background: radial-gradient(circle, rgba(220, 80, 80, .22) 0%, transparent 70%); }
-    .stat-card.info    .stat-card__orb { background: radial-gradient(circle, rgba(55, 138, 221, .22) 0%, transparent 70%); }
-    .stat-card.success .stat-card__orb { background: radial-gradient(circle, rgba(99, 153, 34, .22) 0%, transparent 70%); }
+    .stat-card.danger .stat-card__orb {
+        background: radial-gradient(circle, rgba(220, 80, 80, .22) 0%, transparent 70%);
+    }
+
+    .stat-card.info .stat-card__orb {
+        background: radial-gradient(circle, rgba(55, 138, 221, .22) 0%, transparent 70%);
+    }
+
+    .stat-card.success .stat-card__orb {
+        background: radial-gradient(circle, rgba(99, 153, 34, .22) 0%, transparent 70%);
+    }
 
     .stat-card__label {
         font-size: 11px;
@@ -458,9 +540,17 @@
         z-index: 1;
     }
 
-    .stat-card.danger  .stat-card__change { color: rgba(255, 100, 100, .8); }
-    .stat-card.info    .stat-card__change { color: rgba(55, 138, 221, .8); }
-    .stat-card.success .stat-card__change { color: var(--accent); }
+    .stat-card.danger .stat-card__change {
+        color: rgba(255, 100, 100, .8);
+    }
+
+    .stat-card.info .stat-card__change {
+        color: rgba(55, 138, 221, .8);
+    }
+
+    .stat-card.success .stat-card__change {
+        color: var(--accent);
+    }
 
     /* ── Bottom grid ── */
     .bottom-grid {
@@ -490,7 +580,9 @@
         background: linear-gradient(90deg, transparent, var(--accent), transparent);
     }
 
-    .panel__inner { padding: 24px; }
+    .panel__inner {
+        padding: 24px;
+    }
 
     .panel__header {
         display: flex;
@@ -547,7 +639,9 @@
         vertical-align: middle;
     }
 
-    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:last-child td {
+        border-bottom: none;
+    }
 
     .status-pill {
         display: inline-flex;
@@ -566,12 +660,32 @@
         border-radius: 50%;
     }
 
-    .status-pill.active  { background: #eafbe6; color: #3a7d22; }
-    .status-pill.active::before  { background: #3a7d22; }
-    .status-pill.pending { background: #fff8e6; color: #a06e00; }
-    .status-pill.pending::before { background: #a06e00; }
-    .status-pill.done    { background: #e8f0fe; color: #1a56b0; }
-    .status-pill.done::before    { background: #1a56b0; }
+    .status-pill.active {
+        background: #eafbe6;
+        color: #3a7d22;
+    }
+
+    .status-pill.active::before {
+        background: #3a7d22;
+    }
+
+    .status-pill.pending {
+        background: #fff8e6;
+        color: #a06e00;
+    }
+
+    .status-pill.pending::before {
+        background: #a06e00;
+    }
+
+    .status-pill.done {
+        background: #e8f0fe;
+        color: #1a56b0;
+    }
+
+    .status-pill.done::before {
+        background: #1a56b0;
+    }
 
     /* Activity */
     .activity-item {
@@ -582,7 +696,9 @@
         border-bottom: 1px solid var(--border);
     }
 
-    .activity-item:last-child { border-bottom: none; }
+    .activity-item:last-child {
+        border-bottom: none;
+    }
 
     .activity-icon {
         width: 34px;
@@ -594,10 +710,21 @@
         flex-shrink: 0;
     }
 
-    .activity-icon.green  { background: #eafbe6; }
-    .activity-icon.blue   { background: #e8f0fe; }
-    .activity-icon.yellow { background: #fff8e6; }
-    .activity-icon.red    { background: #fce8e8; }
+    .activity-icon.green {
+        background: #eafbe6;
+    }
+
+    .activity-icon.blue {
+        background: #e8f0fe;
+    }
+
+    .activity-icon.yellow {
+        background: #fff8e6;
+    }
+
+    .activity-icon.red {
+        background: #fce8e8;
+    }
 
     .activity-info__title {
         font-size: 13px;
@@ -613,19 +740,47 @@
 
     /* ── Responsive ── */
     @media (max-width: 1024px) {
-        .scene { grid-template-columns: 220px 1fr; }
-        .stats-grid { grid-template-columns: 1fr 1fr; }
-        .stat-card:nth-child(3) { grid-column: 1 / -1; }
+        .scene {
+            grid-template-columns: 220px 1fr;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .stat-card:nth-child(3) {
+            grid-column: 1 / -1;
+        }
     }
 
     @media (max-width: 768px) {
-        .scene { grid-template-columns: 1fr; }
-        .sidebar { display: none; }
-        .stats-grid { grid-template-columns: 1fr; }
-        .bottom-grid { grid-template-columns: 1fr; }
-        .stat-card:nth-child(3) { grid-column: auto; }
-        .content { padding: 20px 16px; }
-        .topbar { padding: 0 16px; }
+        .scene {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+            display: none;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .bottom-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .stat-card:nth-child(3) {
+            grid-column: auto;
+        }
+
+        .content {
+            padding: 20px 16px;
+        }
+
+        .topbar {
+            padding: 0 16px;
+        }
     }
 </style>
 
@@ -653,34 +808,45 @@
 
                 <a href="{{ route('admin.index') }}" class="nav-item active">
                     <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="7" height="7" rx="1"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
                     </svg>
                     <span class="nav-label">Dashboard</span>
                 </a>
 
                 <a href="{{ route('sidebar.index') }}" class="nav-item">
                     <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                        <path d="M3 9h18M3 15h18M9 3v18"/>
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M3 15h18M9 3v18" />
                     </svg>
                     <span class="nav-label">Sidebar</span>
+                </a>
+
+                <a href="{{ route('student.index') }}" class="nav-item">
+                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M3 15h18M9 3v18" />
+                    </svg>
+                    <span class="nav-label">Users</span>
                 </a>
 
                 <div class="nav-section-label">UI Elements</div>
 
                 <a href="#" class="nav-item">
                     <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                     </svg>
                     <span class="nav-label">Forms</span>
                 </a>
 
                 <a href="#" class="nav-item">
                     <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/>
+                        <circle cx="12" cy="12" r="2" />
+                        <circle cx="19" cy="12" r="2" />
+                        <circle cx="5" cy="12" r="2" />
                     </svg>
                     <span class="nav-label">Icons</span>
                 </a>
@@ -690,10 +856,11 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="signout-btn">
-                        <svg class="nav-icon" fill="none" stroke="rgba(255,100,100,.5)" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                            <polyline points="16 17 21 12 16 7"/>
-                            <line x1="21" y1="12" x2="9" y2="12"/>
+                        <svg class="nav-icon" fill="none" stroke="rgba(255,100,100,.5)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                            <polyline points="16 17 21 12 16 7" />
+                            <line x1="21" y1="12" x2="9" y2="12" />
                         </svg>
                         <span class="nav-label">Sign out</span>
                     </button>
@@ -710,11 +877,12 @@
                     <span class="topbar__eyebrow">Overview</span>
                     <div class="topbar__title">
                         <div class="icon-badge">
-                            <svg width="14" height="14" fill="none" stroke="var(--ink)" stroke-width="2.2" viewBox="0 0 24 24">
-                                <rect x="3" y="3" width="7" height="7" rx="1"/>
-                                <rect x="14" y="3" width="7" height="7" rx="1"/>
-                                <rect x="3" y="14" width="7" height="7" rx="1"/>
-                                <rect x="14" y="14" width="7" height="7" rx="1"/>
+                            <svg width="14" height="14" fill="none" stroke="var(--ink)" stroke-width="2.2"
+                                viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="7" height="7" rx="1" />
+                                <rect x="14" y="3" width="7" height="7" rx="1" />
+                                <rect x="3" y="14" width="7" height="7" rx="1" />
+                                <rect x="14" y="14" width="7" height="7" rx="1" />
                             </svg>
                         </div>
                         Dashboard
@@ -722,23 +890,26 @@
                 </div>
                 <div class="topbar__right">
                     <div class="search-box">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
                         <input type="text" placeholder="Search projects...">
                     </div>
                     <div class="icon-btn">
-                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                         </svg>
                         <div class="notif-dot"></div>
                     </div>
                     <div class="icon-btn">
-                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M20 21a8 8 0 1 0-16 0"/>
+                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M20 21a8 8 0 1 0-16 0" />
                         </svg>
                     </div>
                 </div>
@@ -753,9 +924,10 @@
                         <div class="stat-card__orb"></div>
                         <div class="stat-card__label">
                             Weekly Sales
-                            <svg width="16" height="16" fill="none" stroke="rgba(220,80,80,.5)" stroke-width="2" viewBox="0 0 24 24">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                                <polyline points="17 6 23 6 23 12"/>
+                            <svg width="16" height="16" fill="none" stroke="rgba(220,80,80,.5)" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                <polyline points="17 6 23 6 23 12" />
                             </svg>
                         </div>
                         <div class="stat-card__value">$ 15,000</div>
@@ -766,9 +938,11 @@
                         <div class="stat-card__orb"></div>
                         <div class="stat-card__label">
                             Weekly Orders
-                            <svg width="16" height="16" fill="none" stroke="rgba(55,138,221,.5)" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            <svg width="16" height="16" fill="none" stroke="rgba(55,138,221,.5)" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                                <line x1="7" y1="7" x2="7.01" y2="7" />
                             </svg>
                         </div>
                         <div class="stat-card__value">45,633</div>
@@ -779,11 +953,12 @@
                         <div class="stat-card__orb"></div>
                         <div class="stat-card__label">
                             Visitors Online
-                            <svg width="16" height="16" fill="none" stroke="rgba(99,153,34,.5)" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <svg width="16" height="16" fill="none" stroke="rgba(99,153,34,.5)" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
                         </div>
                         <div class="stat-card__value">95,574</div>
@@ -855,8 +1030,9 @@
 
                             <div class="activity-item">
                                 <div class="activity-icon green">
-                                    <svg width="14" height="14" fill="none" stroke="#3a7d22" stroke-width="2.2" viewBox="0 0 24 24">
-                                        <polyline points="20 6 9 17 4 12"/>
+                                    <svg width="14" height="14" fill="none" stroke="#3a7d22" stroke-width="2.2"
+                                        viewBox="0 0 24 24">
+                                        <polyline points="20 6 9 17 4 12" />
                                     </svg>
                                 </div>
                                 <div class="activity-info">
@@ -867,11 +1043,12 @@
 
                             <div class="activity-item">
                                 <div class="activity-icon blue">
-                                    <svg width="14" height="14" fill="none" stroke="#1a56b0" stroke-width="2.2" viewBox="0 0 24 24">
-                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="9" cy="7" r="4"/>
-                                        <line x1="19" y1="8" x2="19" y2="14"/>
-                                        <line x1="22" y1="11" x2="16" y2="11"/>
+                                    <svg width="14" height="14" fill="none" stroke="#1a56b0" stroke-width="2.2"
+                                        viewBox="0 0 24 24">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <line x1="19" y1="8" x2="19" y2="14" />
+                                        <line x1="22" y1="11" x2="16" y2="11" />
                                     </svg>
                                 </div>
                                 <div class="activity-info">
@@ -882,10 +1059,11 @@
 
                             <div class="activity-item">
                                 <div class="activity-icon yellow">
-                                    <svg width="14" height="14" fill="none" stroke="#a06e00" stroke-width="2.2" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <line x1="12" y1="8" x2="12" y2="12"/>
-                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                    <svg width="14" height="14" fill="none" stroke="#a06e00" stroke-width="2.2"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="12" y1="8" x2="12" y2="12" />
+                                        <line x1="12" y1="16" x2="12.01" y2="16" />
                                     </svg>
                                 </div>
                                 <div class="activity-info">
@@ -896,8 +1074,9 @@
 
                             <div class="activity-item">
                                 <div class="activity-icon green">
-                                    <svg width="14" height="14" fill="none" stroke="#3a7d22" stroke-width="2.2" viewBox="0 0 24 24">
-                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                    <svg width="14" height="14" fill="none" stroke="#3a7d22" stroke-width="2.2"
+                                        viewBox="0 0 24 24">
+                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                                     </svg>
                                 </div>
                                 <div class="activity-info">
@@ -908,10 +1087,11 @@
 
                             <div class="activity-item">
                                 <div class="activity-icon red">
-                                    <svg width="14" height="14" fill="none" stroke="#b02a2a" stroke-width="2.2" viewBox="0 0 24 24">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <line x1="15" y1="9" x2="9" y2="15"/>
-                                        <line x1="9" y1="9" x2="15" y2="15"/>
+                                    <svg width="14" height="14" fill="none" stroke="#b02a2a" stroke-width="2.2"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <line x1="15" y1="9" x2="9" y2="15" />
+                                        <line x1="9" y1="9" x2="15" y2="15" />
                                     </svg>
                                 </div>
                                 <div class="activity-info">
@@ -931,4 +1111,5 @@
 
     <x-script />
 </body>
+
 </html>

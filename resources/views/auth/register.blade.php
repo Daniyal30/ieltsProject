@@ -467,7 +467,7 @@
                     @csrf
                     <!-- Full Name -->
                     <div class="field">
-                        <label for="username">Full Name</label>
+                        <label for="username">Full Name <span class="text-danger">*</span></label>
                         <div class="field__wrap">
                             <span class="field__icon">
                                 <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -486,7 +486,7 @@
 
                     <!-- Email -->
                     <div class="field">
-                        <label for="email">Email Address</label>
+                        <label for="email">Email Address <span class="text-danger">*</span></label>
                         <div class="field__wrap">
                             <span class="field__icon">
                                 <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -507,7 +507,7 @@
                     <!-- Phone + DOB (2 column) -->
                     <div class="field-row">
                         <div class="field">
-                            <label for="phone">Phone</label>
+                            <label for="phone">Phone <span class="text-danger">*</span></label>
                             <div class="field__wrap">
                                 <span class="field__icon">
                                     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -525,7 +525,7 @@
                         </div>
 
                         <div class="field">
-                            <label for="dob">Date of Birth</label>
+                            <label for="dob">Date of Birth <span class="text-danger">*</span></label>
                             <div class="field__wrap">
                                 <span class="field__icon">
                                     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -547,7 +547,7 @@
                     <!-- Gender + Band Score (2 column) -->
                     <div class="field-row">
                         <div class="field">
-                            <label for="gender">Gender</label>
+                            <label for="gender">Gender <span class="text-danger">*</span></label>
                             <div class="field__wrap select-wrap">
                                 <span class="field__icon">
                                     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -571,7 +571,7 @@
                         </div>
 
                         <div class="field">
-                            <label for="band_score">Target Band</label>
+                            <label for="band_score">Target Band <span class="text-danger">*</span></label>
                             <div class="field__wrap select-wrap">
                                 <span class="field__icon">
                                     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
@@ -645,7 +645,7 @@
                     <!-- Password + Confirm (2 column) -->
                     <div class="field-row">
                         <div class="field">
-                            <label for="password">Password</label>
+                            <label for="password">Password <span class="text-danger">*</span></label>
                             <div class="field__wrap">
                                 <span class="field__icon">
                                     <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"

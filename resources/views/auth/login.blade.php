@@ -515,7 +515,7 @@
 
                     {{-- Email field --}}
                     <div class="field">
-                        <label for="email">Email address</label><span class="text-danger">*</span>
+                        <label for="email">Email address <span style="color: red;">*</span></label>
                         <div class="field__wrap">
                             <svg class="field__icon" width="16" height="16" fill="none" stroke="currentColor"
                                 stroke-width="1.8" viewBox="0 0 24 24">
@@ -532,7 +532,7 @@
 
                     {{-- Password field --}}
                     <div class="field">
-                        <label for="password">Password <span class="text-danger">*</span></label>
+                        <label for="password">Password <span style="color: red;">*</span></label>
                         <div class="field__wrap">
                             <svg class="field__icon" width="16" height="16" fill="none" stroke="currentColor"
                                 stroke-width="1.8" viewBox="0 0 24 24">

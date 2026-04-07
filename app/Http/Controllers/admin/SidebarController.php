@@ -43,7 +43,6 @@ class SidebarController extends Controller
         $crenditials = $request->validate([
             'title' => 'required|regex:/^[a-zA-Z\s]+$/',
             'url' => 'required',
-            'order' => 'required',
             'icon' => 'required',
         ]);
 
@@ -73,15 +72,25 @@ class SidebarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Sidebar $sidebar)
     {
-        //
+        $credentials = $request->validate([
+            'title' => 'required|regex:/^[a-zA-Z\s]+$/',
+            'url' => 'required',
+            'icon' => 'required',
+        ]);
+
+        $credentials['is_active'] = $request->has('is_active') ? 0 : 1;
+
+        $sidebar->update($credentials);
+
+        return redirect()->route('sidebar.index')->with('success', 'Sidebar Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Sidebar $sidebar)
+    public function destroy(Request $request, Sidebar $sidebar)
     {
         $sidebar->delete();
 
@@ -90,13 +99,25 @@ class SidebarController extends Controller
 
     public function statusUpdate(Sidebar $sidebar)
     {
-        // toggle (0 → 1, 1 → 0)
+
         $sidebar->is_active = $sidebar->is_active == 1 ? 0 : 1;
         $sidebar->save();
 
         return response()->json([
             'success' => true,
             'is_active' => $sidebar->is_active,
+        ]);
+    }
+
+    public function bulkDestroy(Request $request)
+    {
+        $request->validate(['ids' => 'required|array']);
+
+        Sidebar::whereIn('id', $request->ids)->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => count($request->ids).' items deleted successfully',
         ]);
     }
 }

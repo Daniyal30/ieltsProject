@@ -66,6 +66,7 @@ class UserController extends Controller
                 return redirect()->route('user.index');
             }
         }
+
         return back()->withErrors([
             'error' => 'Email or Password incorrect',
         ])->withInput($request->only('email'));

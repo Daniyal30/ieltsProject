@@ -469,7 +469,7 @@
     /* ── Form Fields ── */
     .form-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
 
@@ -634,9 +634,9 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        padding-top: 28px;
+        padding-top: 12px;
         border-top: 1px solid var(--border);
-        margin-top: 28px;
+        margin-top: 12px;
     }
 
     .btn-primary {
@@ -981,32 +981,6 @@
                                     @error('url')
                                         <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
                                     @enderror
-                                </div>
-
-                                <!-- Order -->
-                                <div class="form-group">
-                                    <label for="order">Order <span class="required">*</span></label>
-                                    <div class="input-wrap">
-                                        <span class="input-icon">
-                                            <svg width="15" height="15" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <line x1="8" y1="6" x2="21" y2="6" />
-                                                <line x1="8" y1="12" x2="21" y2="12" />
-                                                <line x1="8" y1="18" x2="21" y2="18" />
-                                                <line x1="3" y1="6" x2="3.01" y2="6" />
-                                                <line x1="3" y1="12" x2="3.01" y2="12" />
-                                                <line x1="3" y1="18" x2="3.01" y2="18" />
-                                            </svg>
-                                        </span>
-                                        <input type="number" id="order" name="order" value="{{ old('order') }}"
-                                            placeholder="e.g. 1, 2, 3...">
-
-                                    </div>
-                                    <span class="hint-text">Lower number = appears higher in sidebar.</span>
-                                    @error('order')
-                                        <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
-                                    @enderror
-
                                 </div>
 
                                 <!-- Icon -->
