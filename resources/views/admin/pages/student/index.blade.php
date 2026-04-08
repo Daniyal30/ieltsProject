@@ -23,7 +23,8 @@
         --border: #e2e0d8;
     }
 
-    html, body {
+    html,
+    body {
         height: 100%;
         font-family: 'DM Sans', sans-serif;
         background-color: var(--ink);
@@ -43,7 +44,7 @@
         background: var(--ink);
         display: flex;
         flex-direction: column;
-        border-right: 1px solid rgba(255,255,255,0.06);
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
         position: relative;
         overflow: hidden;
     }
@@ -53,8 +54,8 @@
         position: absolute;
         inset: 0;
         background-image:
-            linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+            linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
     }
@@ -64,7 +65,7 @@
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(200,240,78,0.18) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(200, 240, 78, 0.18) 0%, transparent 70%);
         bottom: -80px;
         left: -60px;
         pointer-events: none;
@@ -72,8 +73,17 @@
     }
 
     @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50%       { transform: scale(1.1); opacity: 0.6; }
+
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 0.6;
+        }
     }
 
     .sidebar__logo {
@@ -90,14 +100,17 @@
         letter-spacing: .02em;
     }
 
-    .logo-text em { font-style: normal; color: var(--accent); }
+    .logo-text em {
+        font-style: normal;
+        color: var(--accent);
+    }
 
     .sidebar__profile {
         padding: 14px 18px;
         margin: 0 12px;
         border-radius: 14px;
-        background: rgba(255,255,255,.04);
-        border: 1px solid rgba(255,255,255,.07);
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 255, 255, .07);
         display: flex;
         align-items: center;
         gap: 12px;
@@ -120,7 +133,11 @@
         flex-shrink: 0;
     }
 
-    .profile-info__name { font-size: 13px; font-weight: 500; color: #fff; }
+    .profile-info__name {
+        font-size: 13px;
+        font-weight: 500;
+        color: #fff;
+    }
 
     .online-dot {
         width: 8px;
@@ -132,8 +149,15 @@
     }
 
     @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50%       { opacity: 0; }
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
     }
 
     .sidebar__nav {
@@ -144,14 +168,16 @@
         overflow-y: auto;
     }
 
-    .sidebar__nav::-webkit-scrollbar { width: 0; }
+    .sidebar__nav::-webkit-scrollbar {
+        width: 0;
+    }
 
     .nav-section-label {
         font-size: 10px;
         font-weight: 500;
         letter-spacing: .14em;
         text-transform: uppercase;
-        color: rgba(255,255,255,.2);
+        color: rgba(255, 255, 255, .2);
         padding: 0 12px;
         margin: 16px 0 8px;
     }
@@ -168,22 +194,39 @@
         text-decoration: none;
     }
 
-    .nav-item:hover { background: rgba(255,255,255,.05); }
-
-    .nav-item.active {
-        background: rgba(200,240,78,.12);
-        border: 1px solid rgba(200,240,78,.2);
+    .nav-item:hover {
+        background: rgba(255, 255, 255, .05);
     }
 
-    .nav-item.active .nav-icon { color: var(--accent); }
-    .nav-item.active .nav-label { color: #fff; }
+    .nav-item.active {
+        background: rgba(200, 240, 78, .12);
+        border: 1px solid rgba(200, 240, 78, .2);
+    }
 
-    .nav-icon { width: 18px; height: 18px; color: rgba(255,255,255,.3); flex-shrink: 0; }
-    .nav-label { font-size: 13.5px; color: rgba(255,255,255,.45); font-weight: 400; }
+    .nav-item.active .nav-icon {
+        color: var(--accent);
+    }
+
+    .nav-item.active .nav-label {
+        color: #fff;
+    }
+
+    .nav-icon {
+        width: 18px;
+        height: 18px;
+        color: rgba(255, 255, 255, .3);
+        flex-shrink: 0;
+    }
+
+    .nav-label {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, .45);
+        font-weight: 400;
+    }
 
     .sidebar__footer {
         padding: 14px 12px;
-        border-top: 1px solid rgba(255,255,255,.06);
+        border-top: 1px solid rgba(255, 255, 255, .06);
         position: relative;
         z-index: 1;
     }
@@ -201,8 +244,14 @@
         width: 100%;
     }
 
-    .signout-btn:hover { background: rgba(255,80,80,.08); }
-    .signout-btn .nav-label { color: rgba(255,255,255,.3); font-size: 13px; }
+    .signout-btn:hover {
+        background: rgba(255, 80, 80, .08);
+    }
+
+    .signout-btn .nav-label {
+        color: rgba(255, 255, 255, .3);
+        font-size: 13px;
+    }
 
     /* ── Main Panel ── */
     .main-panel {
@@ -225,7 +274,10 @@
         flex-shrink: 0;
     }
 
-    .topbar__left { display: flex; flex-direction: column; }
+    .topbar__left {
+        display: flex;
+        flex-direction: column;
+    }
 
     .topbar__eyebrow {
         font-size: 10px;
@@ -255,7 +307,11 @@
         justify-content: center;
     }
 
-    .topbar__right { display: flex; align-items: center; gap: 12px; }
+    .topbar__right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
 
     .search-box {
         display: flex;
@@ -270,7 +326,10 @@
         transition: border-color .2s;
     }
 
-    .search-box:focus-within { border-color: var(--ink); background: #fff; }
+    .search-box:focus-within {
+        border-color: var(--ink);
+        background: #fff;
+    }
 
     .search-box input {
         background: none;
@@ -282,7 +341,9 @@
         width: 160px;
     }
 
-    .search-box input::placeholder { color: var(--muted); }
+    .search-box input::placeholder {
+        color: var(--muted);
+    }
 
     .icon-btn {
         width: 38px;
@@ -298,7 +359,10 @@
         transition: background .2s, border-color .2s;
     }
 
-    .icon-btn:hover { background: #fff; border-color: #ccc; }
+    .icon-btn:hover {
+        background: #fff;
+        border-color: #ccc;
+    }
 
     .notif-dot {
         position: absolute;
@@ -318,9 +382,18 @@
         padding: 28px 32px;
     }
 
-    .content::-webkit-scrollbar { width: 6px; }
-    .content::-webkit-scrollbar-track { background: transparent; }
-    .content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .content::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .content::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
+    }
 
     /* ── Page Header ── */
     .page-header {
@@ -328,7 +401,7 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 24px;
-        animation: slideUp .4s cubic-bezier(0.22,1,0.36,1) both;
+        animation: slideUp .4s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     .page-header__left h1 {
@@ -338,7 +411,11 @@
         color: var(--ink);
     }
 
-    .page-header__left p { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    .page-header__left p {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 3px;
+    }
 
     .breadcrumb {
         display: flex;
@@ -348,9 +425,20 @@
         color: var(--muted);
     }
 
-    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .15s; }
-    .breadcrumb a:hover { color: var(--ink); }
-    .breadcrumb span { color: var(--ink); font-weight: 500; }
+    .breadcrumb a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color .15s;
+    }
+
+    .breadcrumb a:hover {
+        color: var(--ink);
+    }
+
+    .breadcrumb span {
+        color: var(--ink);
+        font-weight: 500;
+    }
 
     /* ── Stats Row ── */
     .stats-row {
@@ -358,7 +446,7 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 14px;
         margin-bottom: 20px;
-        animation: slideUp .45s cubic-bezier(0.22,1,0.36,1) both;
+        animation: slideUp .45s cubic-bezier(0.22, 1, 0.36, 1) both;
         animation-delay: .05s;
     }
 
@@ -382,10 +470,21 @@
         flex-shrink: 0;
     }
 
-    .mini-stat__icon.accent  { background: rgba(200,240,78,.15); }
-    .mini-stat__icon.green   { background: #eafbe6; }
-    .mini-stat__icon.yellow  { background: #fff8e6; }
-    .mini-stat__icon.blue    { background: #e8f0fe; }
+    .mini-stat__icon.accent {
+        background: rgba(200, 240, 78, .15);
+    }
+
+    .mini-stat__icon.green {
+        background: #eafbe6;
+    }
+
+    .mini-stat__icon.yellow {
+        background: #fff8e6;
+    }
+
+    .mini-stat__icon.blue {
+        background: #e8f0fe;
+    }
 
     .mini-stat__val {
         font-family: sans-serif;
@@ -394,7 +493,11 @@
         color: var(--ink);
     }
 
-    .mini-stat__label { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .mini-stat__label {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 1px;
+    }
 
     /* ── Filter Bar ── */
     .filter-bar {
@@ -407,7 +510,7 @@
         align-items: center;
         gap: 12px;
         flex-wrap: wrap;
-        animation: slideUp .45s cubic-bezier(0.22,1,0.36,1) both;
+        animation: slideUp .45s cubic-bezier(0.22, 1, 0.36, 1) both;
         animation-delay: .07s;
     }
 
@@ -433,8 +536,14 @@
         transition: border-color .2s;
     }
 
-    .filter-input:focus { border-color: var(--ink); background: #fff; }
-    .filter-input::placeholder { color: var(--muted); }
+    .filter-input:focus {
+        border-color: var(--ink);
+        background: #fff;
+    }
+
+    .filter-input::placeholder {
+        color: var(--muted);
+    }
 
     .filter-select {
         padding: 9px 32px 9px 12px;
@@ -453,7 +562,9 @@
         transition: border-color .2s;
     }
 
-    .filter-select:focus { border-color: var(--ink); }
+    .filter-select:focus {
+        border-color: var(--ink);
+    }
 
     .btn-accent {
         display: inline-flex;
@@ -472,7 +583,10 @@
         text-decoration: none;
     }
 
-    .btn-accent:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-accent:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
+    }
 
     .btn-reset {
         display: inline-flex;
@@ -490,18 +604,21 @@
         text-decoration: none;
     }
 
-    .btn-reset:hover { background: var(--paper); color: var(--ink); }
+    .btn-reset:hover {
+        background: var(--paper);
+        color: var(--ink);
+    }
 
     /* ── Table Card ── */
     .table-card {
         background: var(--surface);
         border-radius: 20px;
         box-shadow:
-            0 1px 2px rgba(0,0,0,.05),
-            0 4px 20px rgba(0,0,0,.06),
+            0 1px 2px rgba(0, 0, 0, .05),
+            0 4px 20px rgba(0, 0, 0, .06),
             0 0 0 1px var(--border);
         overflow: hidden;
-        animation: slideUp .5s cubic-bezier(0.22,1,0.36,1) both;
+        animation: slideUp .5s cubic-bezier(0.22, 1, 0.36, 1) both;
         animation-delay: .1s;
     }
 
@@ -528,12 +645,21 @@
         color: var(--ink);
     }
 
-    .table-toolbar__sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .table-toolbar__sub {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 2px;
+    }
 
     /* ── Data Table ── */
-    .data-table-wrap { overflow-x: auto; }
+    .data-table-wrap {
+        overflow-x: auto;
+    }
 
-    table { width: 100%; border-collapse: collapse; }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
     thead th {
         font-size: 10px;
@@ -548,8 +674,14 @@
         white-space: nowrap;
     }
 
-    thead th:first-child { padding-left: 24px; }
-    thead th:last-child  { padding-right: 24px; text-align: right; }
+    thead th:first-child {
+        padding-left: 24px;
+    }
+
+    thead th:last-child {
+        padding-right: 24px;
+        text-align: right;
+    }
 
     tbody td {
         font-size: 13px;
@@ -559,11 +691,25 @@
         vertical-align: middle;
     }
 
-    tbody td:first-child { padding-left: 24px; }
-    tbody td:last-child  { padding-right: 24px; }
-    tbody tr:last-child td { border-bottom: none; }
-    tbody tr { transition: background .12s; }
-    tbody tr:hover { background: #fafaf8; }
+    tbody td:first-child {
+        padding-left: 24px;
+    }
+
+    tbody td:last-child {
+        padding-right: 24px;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    tbody tr {
+        transition: background .12s;
+    }
+
+    tbody tr:hover {
+        background: #fafaf8;
+    }
 
     /* Student Avatar */
     .student-avatar {
@@ -573,16 +719,25 @@
         object-fit: cover;
     }
 
-    .student-name { font-size: 13px; font-weight: 500; color: var(--ink); }
-    .student-id   { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .student-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--ink);
+    }
+
+    .student-id {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 1px;
+    }
 
     /* Band badge */
     .band-badge {
         display: inline-flex;
         align-items: center;
         padding: 3px 10px;
-        background: rgba(200,240,78,.15);
-        border: 1px solid rgba(200,240,78,.4);
+        background: rgba(200, 240, 78, .15);
+        border: 1px solid rgba(200, 240, 78, .4);
         border-radius: 20px;
         font-family: 'Syne', sans-serif;
         font-size: 11px;
@@ -608,10 +763,23 @@
         border-radius: 50%;
     }
 
-    .status-pill.active   { background: #eafbe6; color: #3a7d22; }
-    .status-pill.active::before   { background: #3a7d22; }
-    .status-pill.inactive { background: #fce8e8; color: #b02a2a; }
-    .status-pill.inactive::before { background: #b02a2a; }
+    .status-pill.active {
+        background: #eafbe6;
+        color: #3a7d22;
+    }
+
+    .status-pill.active::before {
+        background: #3a7d22;
+    }
+
+    .status-pill.inactive {
+        background: #fce8e8;
+        color: #b02a2a;
+    }
+
+    .status-pill.inactive::before {
+        background: #b02a2a;
+    }
 
     /* Action buttons */
     .action-group {
@@ -635,16 +803,37 @@
         text-decoration: none;
     }
 
-    .act-btn:hover { background: #fff; border-color: #ccc; }
+    .act-btn:hover {
+        background: #fff;
+        border-color: #ccc;
+    }
 
-    .act-btn.view:hover { background: #e8f0fe; border-color: #c2d4f8; }
-    .act-btn.view:hover svg { stroke: #1a56b0; }
+    .act-btn.view:hover {
+        background: #e8f0fe;
+        border-color: #c2d4f8;
+    }
 
-    .act-btn.lock:hover { background: #fff8e6; border-color: #f5e2a2; }
-    .act-btn.lock:hover svg { stroke: #a06e00; }
+    .act-btn.view:hover svg {
+        stroke: #1a56b0;
+    }
 
-    .act-btn.mail:hover { background: rgba(200,240,78,.15); border-color: rgba(200,240,78,.4); }
-    .act-btn.mail:hover svg { stroke: #5a7a10; }
+    .act-btn.lock:hover {
+        background: #fff8e6;
+        border-color: #f5e2a2;
+    }
+
+    .act-btn.lock:hover svg {
+        stroke: #a06e00;
+    }
+
+    .act-btn.mail:hover {
+        background: rgba(200, 240, 78, .15);
+        border-color: rgba(200, 240, 78, .4);
+    }
+
+    .act-btn.mail:hover svg {
+        stroke: #5a7a10;
+    }
 
     /* ── Pagination ── */
     .pagination-bar {
@@ -655,19 +844,40 @@
         border-top: 1px solid var(--border);
     }
 
-    .pagination-info { font-size: 12px; color: var(--muted); }
+    .pagination-info {
+        font-size: 12px;
+        color: var(--muted);
+    }
 
     /* ── Animations ── */
     @keyframes slideUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @media (max-width: 768px) {
-        .scene { grid-template-columns: 1fr; }
-        .sidebar { display: none; }
-        .content { padding: 20px 16px; }
-        .stats-row { grid-template-columns: 1fr 1fr; }
+        .scene {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+            display: none;
+        }
+
+        .content {
+            padding: 20px 16px;
+        }
+
+        .stats-row {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 </style>
 
@@ -683,65 +893,14 @@
             </div>
 
             <div class="sidebar__profile">
-                <div class="avatar">AD</div>
+                <div class="avatar">{{ strtoupper(substr(auth()->user()->name, 0, 2)) }}</div>
                 <div class="profile-info">
-                    <div class="profile-info__name">Admin</div>
+                    <div class="profile-info__name text-capitalize">{{ auth()->user()->name }}</div>
                 </div>
                 <div class="online-dot"></div>
             </div>
 
-            <nav class="sidebar__nav">
-                <div class="nav-section-label">Main</div>
-
-                <a href="{{ route('admin.index') }}" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="7" height="7" rx="1"/>
-                        <rect x="14" y="3" width="7" height="7" rx="1"/>
-                        <rect x="3" y="14" width="7" height="7" rx="1"/>
-                        <rect x="14" y="14" width="7" height="7" rx="1"/>
-                    </svg>
-                    <span class="nav-label">Dashboard</span>
-                </a>
-
-                <a href="{{ route('student.index') }}" class="nav-item active">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                    <span class="nav-label">Students</span>
-                </a>
-
-                <a href="{{ route('sidebar.index') }}" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                        <path d="M3 9h18M3 15h18M9 3v18"/>
-                    </svg>
-                    <span class="nav-label">Sidebar</span>
-                </a>
-
-                <div class="nav-section-label">Settings</div>
-
-                <a href="#" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                    </svg>
-                    <span class="nav-label">Settings</span>
-                </a>
-            </nav>
-
-            <div class="sidebar__footer">
-                <button class="signout-btn">
-                    <svg class="nav-icon" fill="none" stroke="rgba(255,100,100,.5)" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-                        <polyline points="16 17 21 12 16 7"/>
-                        <line x1="21" y1="12" x2="9" y2="12"/>
-                    </svg>
-                    <span class="nav-label">Sign out</span>
-                </button>
-            </div>
+            <x-sidebar />
         </aside>
 
         <!-- ── Main Panel ── -->
@@ -750,38 +909,42 @@
             <!-- Topbar -->
             <header class="topbar">
                 <div class="topbar__left">
-                    <span class="topbar__eyebrow">Student Management</span>
+                    {{-- <span class="topbar__eyebrow">Student Management</span>
                     <div class="topbar__title">
                         <div class="icon-badge">
-                            <svg width="14" height="14" fill="none" stroke="var(--ink)" stroke-width="2.2" viewBox="0 0 24 24">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <svg width="14" height="14" fill="none" stroke="var(--ink)" stroke-width="2.2"
+                                viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
                         </div>
                         All Students
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="topbar__right">
                     <div class="search-box">
-                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="8"/>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
                         <input type="text" placeholder="Search students...">
                     </div>
                     <div class="icon-btn">
-                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                         </svg>
                         <div class="notif-dot"></div>
                     </div>
                     <div class="icon-btn">
-                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="8" r="4"/>
-                            <path d="M20 21a8 8 0 1 0-16 0"/>
+                        <svg width="16" height="16" fill="none" stroke="var(--muted)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M20 21a8 8 0 1 0-16 0" />
                         </svg>
                     </div>
                 </div>
@@ -798,8 +961,9 @@
                     </div>
                     <div class="breadcrumb">
                         <a href="{{ route('admin.index') }}">Dashboard</a>
-                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <polyline points="9 18 15 12 9 6"/>
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <polyline points="9 18 15 12 9 6" />
                         </svg>
                         <span>Students</span>
                     </div>
@@ -809,48 +973,53 @@
                 <div class="stats-row">
                     <div class="mini-stat">
                         <div class="mini-stat__icon accent">
-                            <svg width="16" height="16" fill="none" stroke="#5a7a10" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
+                            <svg width="16" height="16" fill="none" stroke="#5a7a10" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
                             </svg>
                         </div>
                         <div>
-                            {{-- <div class="mini-stat__val">{{ $totalStudents }}</div> --}}
+                            <div class="mini-stat__val">{{ $totalStudents }}</div>
                             <div class="mini-stat__label">Total Students</div>
                         </div>
                     </div>
                     <div class="mini-stat">
                         <div class="mini-stat__icon green">
-                            <svg width="16" height="16" fill="none" stroke="#3a7d22" stroke-width="2" viewBox="0 0 24 24">
-                                <polyline points="20 6 9 17 4 12"/>
+                            <svg width="16" height="16" fill="none" stroke="#3a7d22" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
                         <div>
-                            {{-- <div class="mini-stat__val">{{ $activeStudents }}</div> --}}
+                            <div class="mini-stat__val">{{ $activeStudents }}</div>
                             <div class="mini-stat__label">Active</div>
                         </div>
                     </div>
                     <div class="mini-stat">
                         <div class="mini-stat__icon yellow">
-                            <svg width="16" height="16" fill="none" stroke="#a06e00" stroke-width="2" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="12" y1="8" x2="12" y2="12"/>
-                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            <svg width="16" height="16" fill="none" stroke="#a06e00" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
                             </svg>
                         </div>
                         <div>
-                            {{-- <div class="mini-stat__val">{{ $inactiveStudents }}</div> --}}
+                            <div class="mini-stat__val">{{ $inactiveStudents }}</div>
                             <div class="mini-stat__label">Inactive</div>
                         </div>
                     </div>
                     <div class="mini-stat">
                         <div class="mini-stat__icon blue">
-                            <svg width="16" height="16" fill="none" stroke="#1a56b0" stroke-width="2" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+                            <svg width="16" height="16" fill="none" stroke="#1a56b0" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
                             </svg>
                         </div>
                         <div>
-                            {{-- <div class="mini-stat__val">{{ $newThisMonth }}</div> --}}
+                            <div class="mini-stat__val">{{ $newThisMonth }}</div>
                             <div class="mini-stat__label">New This Month</div>
                         </div>
                     </div>
@@ -858,15 +1027,11 @@
 
                 <!-- Filter Bar -->
                 <div class="filter-bar">
-                    <form action="{{ route('student.index') }}" method="get" style="display:flex;align-items:center;gap:12px;flex:1;flex-wrap:wrap;">
+                    <form action="{{ route('student.index') }}" method="get"
+                        style="display:flex;align-items:center;gap:12px;flex:1;flex-wrap:wrap;">
                         @csrf
-                        <input
-                            type="text"
-                            class="filter-input"
-                            name="search"
-                            placeholder="Search by name..."
-                            value="{{ request('search') }}"
-                        >
+                        <input type="text" class="filter-input" name="search" placeholder="Search by name..."
+                            value="{{ request('search') }}">
                         <select class="filter-select" name="is_active">
                             <option value="">All Status</option>
                             <option value="0" {{ request('is_active') == '0' ? 'selected' : '' }}>Active</option>
@@ -874,22 +1039,24 @@
                         </select>
                         <select class="filter-select" name="target_band_score">
                             <option value="">All Target Bands</option>
-                            {{-- @foreach(['5.0','5.5','6.0','6.5','7.0','7.5','8.0','8.5','9.0'] as $band)
+                            @foreach(['5.0', '5.5', '6.0', '6.5', '7.0', '7.5', '8.0', '8.5', '9.0'] as $band)
                                 <option value="{{ $band }}" {{ request('target_band_score') == $band ? 'selected' : '' }}>
                                     Band {{ $band }}
                                 </option>
-                            @endforeach --}}
+                            @endforeach
                         </select>
                         <button type="submit" class="btn-accent">
-                            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+                            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
                             </svg>
                             Filter
                         </button>
                         <a href="{{ route('student.index') }}" class="btn-reset">
-                            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                <polyline points="1 4 1 10 7 10"/>
-                                <path d="M3.51 15a9 9 0 1 0 .49-3.5"/>
+                            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <polyline points="1 4 1 10 7 10" />
+                                <path d="M3.51 15a9 9 0 1 0 .49-3.5" />
                             </svg>
                             Reset
                         </a>
@@ -903,8 +1070,8 @@
                         <div>
                             <div class="table-toolbar__title">Registered Students</div>
                             <div class="table-toolbar__sub">
-                                {{-- Showing {{ $users->firstItem() ?? 0 }}–{{ $users->lastItem() ?? 0 }}
-                                of {{ $users->total() }} students --}}
+                                Showing {{ $users->firstItem() ?? 0 }}–{{ $users->lastItem() ?? 0 }}
+                                of {{ $users->total() }} students
                             </div>
                         </div>
                     </div>
@@ -922,7 +1089,7 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
+                            <tbody>
                                 @php $i = 0; @endphp
                                 @forelse ($users as $user)
                                     <tr>
@@ -930,11 +1097,8 @@
 
                                         <td>
                                             <div style="display:flex;align-items:center;gap:10px;">
-                                                <img
-                                                    src="{{ asset('storage/' . $user->profile_image) }}"
-                                                    class="student-avatar"
-                                                    alt="{{ $user->name }}"
-                                                >
+                                                <img src="{{ asset('storage/' . $user->profile_image) }}"
+                                                    class="student-avatar" alt="{{ $user->name }}">
                                                 <div>
                                                     <div class="student-name">{{ $user->name }}</div>
                                                     <div class="student-id">ID: STD00{{ $i }}</div>
@@ -968,36 +1132,34 @@
                                         <td>
                                             <div class="action-group">
 
-                                                <a href="{{ route('student.show', $user->id) }}" class="act-btn view" title="View Details">
-                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                                                        <circle cx="12" cy="12" r="3"/>
+                                                <a href="{{ route('student.show', $user->id) }}" class="act-btn view"
+                                                    title="View Details">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                        <circle cx="12" cy="12" r="3" />
                                                     </svg>
                                                 </a>
 
 
-                                                <button
-                                                    type="button"
-                                                    class="act-btn lock"
+                                                <button type="button" class="act-btn lock"
                                                     title="{{ $user->is_active == 0 ? 'Deactivate' : 'Activate' }}"
-                                                    onclick="toggleStatus({{ $user->id }}, '{{ $user->is_active == 0 ? 'active' : 'inactive' }}')"
-                                                >
-                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                                    onclick="toggleStatus({{ $user->id }}, '{{ $user->is_active == 0 ? 'active' : 'inactive' }}')">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                                                     </svg>
                                                 </button>
 
 
-                                                <button
-                                                    type="button"
-                                                    class="act-btn mail"
-                                                    title="Send Progress Report"
-                                                    onclick="sendProgress({{ $user->id }})"
-                                                >
-                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
-                                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                                        <polyline points="22,6 12,13 2,6"/>
+                                                <button type="button" class="act-btn mail" title="Send Progress Report"
+                                                    onclick="sendProgress({{ $user->id }})">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <path
+                                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                                        <polyline points="22,6 12,13 2,6" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -1010,12 +1172,12 @@
                                         </td>
                                     </tr>
                                 @endforelse
-                            </tbody> --}}
+                            </tbody>
                         </table>
                     </div>
 
                     <!-- Pagination -->
-                    {{-- <div class="pagination-bar">
+                    <div class="pagination-bar">
                         <div class="pagination-info">
                             Showing {{ $users->firstItem() ?? 0 }} to {{ $users->lastItem() ?? 0 }}
                             of {{ $users->total() }} students
@@ -1023,7 +1185,7 @@
                         <div>
                             {{ $users->links() }}
                         </div>
-                    </div> --}}
+                    </div>
 
                 </div>
             </main>
@@ -1047,4 +1209,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $sidebars = Sidebar::where('is_active', '0')->orderBy('created_at', 'DESC')->paginate(10);
-        return $sidebars;
+        $sidebars = Sidebar::where('is_active', '0')->orderBy('created_at', 'ASC')->get();
         return view('admin.index', compact('sidebars'));
     }
 }

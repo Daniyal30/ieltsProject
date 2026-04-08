@@ -42,7 +42,7 @@ class SidebarController extends Controller
     {
         $crenditials = $request->validate([
             'title' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'url' => 'required',
+            'route_name' => 'required',
             'icon' => 'required',
         ]);
 
@@ -76,7 +76,7 @@ class SidebarController extends Controller
     {
         $credentials = $request->validate([
             'title' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'url' => 'required',
+            'route_name' => 'required',
             'icon' => 'required',
         ]);
 

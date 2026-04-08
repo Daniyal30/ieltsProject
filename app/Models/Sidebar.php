@@ -11,7 +11,7 @@ class Sidebar extends Model
 
     protected $fillable = [
         'title',
-        'url',
+        'route_name',
         'order',
         'is_active',
         'icon',

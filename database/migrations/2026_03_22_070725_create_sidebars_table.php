@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sidebars', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('url');
+            $table->string('route_name');
             $table->integer('order');
             $table->boolean('is_active')->default(0);
             $table->string('icon');

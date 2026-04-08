@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('profile_image')->nullable();
             $table->string('target_band_score')->nullable();
+            $table->boolean('is_active')->default(0);
             $table->text('address')->nullable();
             $table->string('password');
             $table->rememberToken();

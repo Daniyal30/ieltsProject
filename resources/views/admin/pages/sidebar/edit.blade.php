@@ -818,58 +818,7 @@
                 <div class="online-dot"></div>
             </div>
 
-            <nav class="sidebar__nav">
-                <div class="nav-section-label">Main</div>
-
-                <a href="{{ route('admin.index') }}" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="7" height="7" rx="1" />
-                        <rect x="14" y="3" width="7" height="7" rx="1" />
-                        <rect x="3" y="14" width="7" height="7" rx="1" />
-                        <rect x="14" y="14" width="7" height="7" rx="1" />
-                    </svg>
-                    <span class="nav-label">Dashboard</span>
-                </a>
-
-                <a href="{{ route('sidebar.index') }}" class="nav-item active">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="18" height="18" rx="2" />
-                        <path d="M3 9h18M3 15h18M9 3v18" />
-                    </svg>
-                    <span class="nav-label">Sidebar</span>
-                </a>
-
-                <div class="nav-section-label">UI Elements</div>
-
-                <a href="#" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M12 20h9" />
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                    </svg>
-                    <span class="nav-label">Forms</span>
-                </a>
-
-                <a href="#" class="nav-item">
-                    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="2" />
-                        <circle cx="19" cy="12" r="2" />
-                        <circle cx="5" cy="12" r="2" />
-                    </svg>
-                    <span class="nav-label">Icons</span>
-                </a>
-            </nav>
-
-            <div class="sidebar__footer">
-                <button class="signout-btn">
-                    <svg class="nav-icon" fill="none" stroke="rgba(255,100,100,.5)" stroke-width="2"
-                        viewBox="0 0 24 24">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                        <polyline points="16 17 21 12 16 7" />
-                        <line x1="21" y1="12" x2="9" y2="12" />
-                    </svg>
-                    <span class="nav-label">Sign out</span>
-                </button>
-            </div>
+            <x-sidebar />
         </aside>
 
         <!-- ── Main Panel ── -->
@@ -975,10 +924,11 @@
                                                     d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                                             </svg>
                                         </span>
-                                        <input type="text" id="url" name="url"
-                                            placeholder="e.g. /dashboard or https://..." value="{{ $sidebar->url }}">
+                                        <input type="text" id="url" name="route_name"
+                                            placeholder="e.g. /dashboard or https://..."
+                                            value="{{ $sidebar->route_name }}">
                                     </div>
-                                    @error('url')
+                                    @error('route_name')
                                         <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -1004,7 +954,7 @@
                                     </div>
                                     <span class="hint-text">Lower number = appears higher in sidebar.</span>
                                     @error('order')
-                                        <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
+                                    <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
                                     @enderror
 
                                 </div> --}}
