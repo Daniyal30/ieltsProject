@@ -1249,7 +1249,6 @@
                                     <th>#</th>
                                     <th>Module</th>
                                     <th>Title</th>
-                                    <th>Video Path</th>
                                     <th>Created At</th>
                                     <th>Actions</th>
                                 </tr>
@@ -1257,7 +1256,110 @@
                             @php
                                 $i = 0;
                             @endphp
+                            <tbody id="tableBody">
+                                @forelse ($lectures as $lecture)
+                                    <tr>
 
+                                        {{-- Checkbox --}}
+                                        <td>
+                                            <input type="checkbox" style="cursor:pointer;accent-color:var(--ink);">
+                                        </td>
+
+                                        {{-- Order --}}
+                                        <td>
+                                            <span>{{ ++$i }}</span>
+                                        </td>
+
+                                        {{-- Title --}}
+                                        <td style="font-weight:500;">{{ $lecture->module->name }}</td>
+
+                                        {{-- URL --}}
+                                        <td>
+                                            <span class="url-cell">{{ $lecture->title }}</span>
+                                        </td>
+
+                                        {{-- Icon --}}
+                                        {{-- <td>
+                                            <span class="icon-chip">
+                                                <i class="{{ $sidebar->icon }}"></i>
+
+                                            </span>
+                                        </td> --}}
+
+                                        {{-- <td>
+                                            <span class="order-badge">
+                                                {{ $sidebar->order }}
+                                            </span>
+                                        </td> --}
+
+                                        {{-- Date --}}
+                                        <td style="color:var(--muted);font-size:12px;">
+                                            {{ $lecture->created_at->format('d M Y') }}
+                                        </td>
+
+                                        {{-- Actions --}}
+                                        <td>
+                                            <div class="action-group">
+
+                                                {{-- Edit Button --}}
+
+                                                <a href="{{ route('lecture.edit', $lecture->id) }}" class="act-btn edit"
+                                                    title="Edit">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <path d="M12 20h9" />
+                                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                                    </svg>
+                                                </a>
+
+                                                <a href="{{ route('lecture.show', $lecture->id) }}" class="act-btn view"
+                                                    title="View Details">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                        <circle cx="12" cy="12" r="3" />
+                                                    </svg>
+                                                </a>
+
+                                                {{-- Delete Button --}}
+
+                                                <form action="{{ route('lecture.destroy', $lecture->id) }}" method="POST"
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button class="act-btn del" title="Delete">
+                                                        <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                            stroke-width="2" viewBox="0 0 24 24">
+                                                            <polyline points="3 6 5 6 21 6" />
+                                                            <path d="M19 6l-1 14H6L5 6" />
+                                                            <path d="M10 11v6M14 11v6" />
+                                                            <path d="M9 6V4h6v2" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                                {{-- <a href="{{ route('sidebar.destroy', $sidebar->id) }}" class=""
+                                                    title="Delete">
+                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
+                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                        <polyline points="3 6 5 6 21 6" />
+                                                        <path d="M19 6l-1 14H6L5 6" />
+                                                        <path d="M10 11v6M14 11v6" />
+                                                        <path d="M9 6V4h6v2" />
+                                                    </svg>
+                                                </a> --}}
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="8" style="text-align:center; padding: 2rem; color:var(--muted);">
+                                            No sidebar items found.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
 
                             {{-- Pagination --}}
                             <div style="margin-top:1rem;">

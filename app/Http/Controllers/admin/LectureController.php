@@ -14,7 +14,9 @@ class LectureController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.lecture.index');
+        $lectures = Lecture::with('module')->orderBy('created_at', 'ASC')->paginate(10);
+
+        return view('admin.pages.lecture.index', compact('lectures'));
     }
 
     /**
@@ -32,11 +34,11 @@ class LectureController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        // return $request;
         $credentials = $request->validate([
             'module_id' => 'required',
             'title' => 'required|regex:/^[a-zA-Z\s]+$/',
-            'video_path' => 'required|mimes:mp4,mov,ogg,qt|max:20000',
+            'video_path' => 'required|mimes:mp4,mov,ogg,qt',
             'description' => 'nullable',
         ]);
 
@@ -55,17 +57,18 @@ class LectureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Lecture $lecture)
     {
-        //
+
+        return view('admin.pages.lecture.view', compact('lecture'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Lecture $lecture)
     {
-        //
+        return view('admin.pages.lecture.edit', compact('lecture'));
     }
 
     /**
@@ -79,8 +82,10 @@ class LectureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Lecture $lecture)
     {
-        //
+        $lecture->delete();
+
+        return redirect()->route('lecture.index')->with('success', 'Lecture Deleted Successfully');
     }
 }

@@ -1200,8 +1200,12 @@
             }
         });
 
-        document.querySelector('form').addEventListener('submit', function () {
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault(); // ✅ Stop form, set description first, then submit
+
             document.getElementById('description-input').value = quill.root.innerHTML;
+
+            this.submit(); // ✅ Now submit with description populated
         });
 
         function showFileName(input) {

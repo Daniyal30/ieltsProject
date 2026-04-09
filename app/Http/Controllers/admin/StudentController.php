@@ -71,12 +71,37 @@ class StudentController extends Controller
         //
     }
 
+//     public function show(User $user)
+// {
+
+//     $lecturesDone = $user->lectures()->where('completed', true)->count();
+//     $totalLectures = $user->lectures()->count();
+
+//     $assignmentsDone = $user->assignments()->where('status', 'submitted')->count();
+//     $totalAssignments = $user->assignments()->count();
+
+//     $progress = $totalLectures > 0 ? round(($lecturesDone / $totalLectures) * 100) : 0;
+//     $avgScore = $user->assignments()->avg('score') ?? 0;
+
+//     return view('admin.pages.student.view', compact(
+//         'user',
+//         'progress',
+//         'lecturesDone',
+//         'totalLectures',
+//         'assignmentsDone',
+//         'totalAssignments',
+//         'avgScore'
+//     ));
+// }
+
+
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $student)
     {
-        //
+
+        return view('admin.pages.student.view', compact('student'));
     }
 
     /**

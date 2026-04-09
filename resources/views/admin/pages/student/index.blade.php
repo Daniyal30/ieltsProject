@@ -909,7 +909,7 @@
             <!-- Topbar -->
             <header class="topbar">
                 <div class="topbar__left">
-                    {{-- <span class="topbar__eyebrow">Student Management</span>
+                    <span class="topbar__eyebrow">Student Management</span>
                     <div class="topbar__title">
                         <div class="icon-badge">
                             <svg width="14" height="14" fill="none" stroke="var(--ink)" stroke-width="2.2"
@@ -921,7 +921,7 @@
                             </svg>
                         </div>
                         All Students
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="topbar__right">
                     <div class="search-box">
