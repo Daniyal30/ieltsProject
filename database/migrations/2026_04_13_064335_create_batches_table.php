@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('batches', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->time('batch_start_time');
+            $table->time('batch_end_time');
+            $table->date('start_time');
+            $table->date('end_time');
+            $table->enum('days', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']);
+            $table->integer('max_students')->default(30);
+            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->text('description')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('batches');
+    }
+};

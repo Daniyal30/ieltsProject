@@ -847,7 +847,8 @@
                             </h4>
 
                             <p style="font-size:14px; color:#374151; line-height:1.7;">
-                                {{ $lecture->description ?? 'No description available.' }}
+                                {!! $lecture->description !!}
+                                {{-- {{ $lecture->description  }} --}}
                             </p>
                         </div>
 

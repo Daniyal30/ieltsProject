@@ -701,7 +701,6 @@
         align-items: center;
         gap: 12px;
         padding-top: 12px;
-        border-top: 1px solid var(--border);
         margin-top: 12px;
     }
 
@@ -1024,110 +1023,74 @@
                         <div class="form-card__title">Item Details</div>
                         <div class="form-card__sub">All fields marked with * are required.</div>
 
-                        <form action="{{ route('lecture.store') }}" method="post" enctype="multipart/form-data">
+                        <form id="lecture-form">
                             @csrf
-                            <div class="form-grid">
-                                <!-- Module Name -->
-                                <div class="form-group">
-                                    <label for="icon">Module Name <span class="required">*</span></label>
-                                    <div class="input-wrap select-wrap">
-                                        <span class="input-icon">
-                                            <svg width="15" height="15" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <line x1="12" y1="8" x2="12" y2="12" />
-                                                <line x1="12" y1="16" x2="12.01" y2="16" />
-                                            </svg>
-                                        </span>
-                                        <select name="module_id" id="module_id">
-                                            <option value="">-- Select Module --</option>
-                                            @foreach ($modules as $module)
-                                                <option value="{{ $module->id }}" {{ old('module_id') == $module->id ? 'selected' : '' }}>
-                                                    {{ $module->name }}
-                                                </option>
-                                            @endforeach
 
-                                        </select>
-                                    </div>
-                                    <span class="hint-text">Select module from the list.</span>
-                                    @error('module_id')
-                                        <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
-                                    @enderror
+                            <!-- Module -->
+                            <div class="form-group">
+                                <label for="module_id">Module Name <span class="required">*</span></label>
+                                <div class="input-wrap select-wrap">
+                                    <select name="module_id" id="module_id">
+                                        <option value="">-- Select Module --</option>
+                                        @foreach ($modules as $module)
+                                            <option value="{{ $module->id }}"
+                                                {{ old('module_id') == $module->id ? 'selected' : '' }}>
+                                                {{ $module->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-
-                                <!-- Title -->
-                                <div class="form-group">
-                                    <label for="title">Title <span class="required">*</span></label>
-                                    <div class="input-wrap">
-                                        <span class="input-icon">
-                                            <svg width="15" height="15" fill="none" stroke="currentColor"
-                                                stroke-width="2" viewBox="0 0 24 24">
-                                                <path d="M12 20h9" />
-                                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                                            </svg>
-                                        </span>
-                                        <input type="text" id="title" name="title" value="{{ old('title') }}"
-                                            placeholder="e.g. Dashboard, Reports...">
-                                    </div>
-                                    @error('title')
-                                        <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- URL -->
-                                <div class="form-group">
-                                    <label for="video_path">Video <span class="required">*</span></label>
-
-                                    <label for="video_path" class="file-upload-box" id="upload-label">
-
-                                        <!-- Icon -->
-                                        <div class="file-upload-icon">
-                                            <svg fill="none" stroke="currentColor" stroke-width="1.5"
-                                                viewBox="0 0 24 24">
-                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                                                <polyline points="17 8 12 3 7 8" />
-                                                <line x1="12" y1="3" x2="12" y2="15" />
-                                            </svg>
-                                        </div>
-
-                                        <!-- Text -->
-                                        <div>
-                                            <p class="file-upload-text">Click to upload video</p>
-
-                                        </div>
-
-                                        <input type="file" id="video_path" name="video_path" accept="video/*"
-                                            style="display: none;" onchange="showFileName(this)">
-                                    </label>
-                                    <p class="file-upload-hint">MP4, AVI, MOV, MKV</p>
-                                    <p class="file-upload-name" id="file-name-display"></p>
-
-                                    @error('video_path')
-                                        <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-                                <!-- ✅ Description (Text Editor) -->
-                                <div class="form-group" style="grid-column: 1 / -1;">
-                                    <label for="description">Description</label>
-                                    <div id="description-editor" style="height: 350px;"></div>
-                                    <input type="hidden" name="description" id="description-input">
-                                    @error('description')
-                                        <span class="text-danger" style="font-size: 12px;">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
+                                @error('module_id')
+                                    <span class="text-danger" style="font-size:12px;">{{ $message }}</span>
+                                @enderror
                             </div>
 
-                            <!-- Actions -->
+                            <!-- Title -->
+                            <div class="form-group">
+                                <label for="title">Title <span class="required">*</span></label>
+                                <div class="input-wrap">
+                                    <input type="text" id="title" name="title" value="{{ old('title') }}"
+                                        placeholder="e.g. Introduction to Laravel">
+                                </div>
+                                @error('title')
+                                    <span class="text-danger" style="font-size:12px;">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <!-- FilePond Upload -->
+                            <div class="form-group">
+                                <label>Video <span class="required">*</span></label>
+                                <input type="file" id="video_path" accept="video/*">
+                                <p class="file-upload-hint">MP4, AVI, MOV, MKV — Large files supported ✅</p>
+                            </div>
+
+                            <!-- Hidden Fields -->
+                            <input type="hidden" id="upload_id" name="upload_id">
+                            <input type="hidden" id="file_name" name="file_name">
+
+                            <!-- Description -->
+                            <div class="form-group" style="grid-column: 1 / -1;">
+                                <label for="description">Description</label>
+                                <div id="description-editor" style="height: 350px;"></div>
+                                <input type="hidden" name="description" id="description-input">
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div id="upload-progress" style="display:none; margin-bottom:15px;">
+                                <p style="font-weight:500;">Uploading video...</p>
+                                <div style="background:#e0e0e0; border-radius:8px; height:10px;">
+                                    <div id="progress-bar"
+                                        style="background:#4f46e5; height:10px; border-radius:8px;
+                        width:0%; transition:width 0.3s;">
+                                    </div>
+                                </div>
+                                <p id="progress-text" style="font-size:12px; margin-top:4px; color:#555;">0%</p>
+                            </div>
+
+                            <!-- Submit -->
                             <div class="form-actions">
-                                <button type="submit" class="btn-accent">
-                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
-                                        viewBox="0 0 24 24">
-                                        <line x1="12" y1="5" x2="12" y2="19" />
-                                        <line x1="5" y1="12" x2="19" y2="12" />
-                                    </svg>
-                                    Create Item
+                                <button type="submit" id="submit-btn" class="btn-accent">
+                                    Create Lecture
                                 </button>
                             </div>
                         </form>
@@ -1171,20 +1134,40 @@
                 toolbar: {
                     container: [
                         // ✅ Updated font list
-                        [{ 'font': ['arial', 'times', 'courier', 'georgia', 'verdana', 'tahoma'] }],
-                        [{ 'size': ['small', false, 'large', 'huge'] }],
-                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        [{
+                            'font': ['arial', 'times', 'courier', 'georgia', 'verdana', 'tahoma']
+                        }],
+                        [{
+                            'size': ['small', false, 'large', 'huge']
+                        }],
+                        [{
+                            'header': [1, 2, 3, 4, 5, 6, false]
+                        }],
                         ['bold', 'italic', 'underline', 'strike'],
-                        [{ 'color': [] }, { 'background': [] }],
+                        [{
+                            'color': []
+                        }, {
+                            'background': []
+                        }],
                         ['highlight'],
-                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                        [{ 'indent': '-1' }, { 'indent': '+1' }],
-                        [{ 'align': [] }],
+                        [{
+                            'list': 'ordered'
+                        }, {
+                            'list': 'bullet'
+                        }],
+                        [{
+                            'indent': '-1'
+                        }, {
+                            'indent': '+1'
+                        }],
+                        [{
+                            'align': []
+                        }],
                         ['link', 'image'],
                         ['clean']
                     ],
                     handlers: {
-                        highlight: function () {
+                        highlight: function() {
                             var range = quill.getSelection();
                             if (range && range.length > 0) {
                                 var currentFormat = quill.getFormat(range);
@@ -1200,7 +1183,7 @@
             }
         });
 
-        document.querySelector('form').addEventListener('submit', function (e) {
+        document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault(); // ✅ Stop form, set description first, then submit
 
             document.getElementById('description-input').value = quill.root.innerHTML;
@@ -1219,21 +1202,152 @@
         // Drag & Drop support
         var uploadLabel = document.getElementById('upload-label');
 
-        uploadLabel.addEventListener('dragover', function (e) {
+        uploadLabel.addEventListener('dragover', function(e) {
             e.preventDefault();
             this.classList.add('dragover');
         });
 
-        uploadLabel.addEventListener('dragleave', function () {
+        uploadLabel.addEventListener('dragleave', function() {
             this.classList.remove('dragover');
         });
 
-        uploadLabel.addEventListener('drop', function (e) {
+        uploadLabel.addEventListener('drop', function(e) {
             e.preventDefault();
             this.classList.remove('dragover');
             var fileInput = document.getElementById('video_path');
             fileInput.files = e.dataTransfer.files;
             showFileName(fileInput);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            let uploadedId = null;
+            let uploadedName = null;
+
+            const pond = FilePond.create(document.getElementById('video_path'), {
+                allowMultiple: false,
+                chunkUploads: true,
+                chunkSize: 5000000,
+
+                server: {
+                    process: {
+                        url: '{{ route('upload.init') }}',
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        onload: (response) => {
+                            // XMLHttpRequest object se responseText nikalo
+                            if (response && response.responseText) {
+                                uploadedId = response.responseText.trim();
+                            } else if (typeof response === 'string') {
+                                uploadedId = response.trim();
+                            } else {
+                                uploadedId = String(response).trim();
+                            }
+                            console.log('Upload ID set:', uploadedId);
+                            // Ye line onload mein add karo temporarily
+                            console.log('Response type:', typeof response);
+                            console.log('Response:', response);
+                            console.log('responseText:', response?.responseText);
+                            return uploadedId;
+                        },
+                        onerror: (response) => {
+                            console.error('Init upload error:', response);
+                        }
+                    },
+                    patch: {
+                        url: '/upload/chunk/',
+                        method: 'PATCH',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    },
+                    revert: {
+                        url: '{{ route('upload.delete') }}',
+                        method: 'DELETE',
+                        headers: {
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    }
+                },
+
+                onaddfile: (error, file) => {
+                    uploadedName = file.filename;
+                    document.getElementById('upload-progress').style.display = 'block';
+                },
+
+                onprocessfileprogress: (file, progress) => {
+                    const pct = Math.round(progress * 100);
+                    document.getElementById('progress-bar').style.width = pct + '%';
+                    document.getElementById('progress-text').textContent = pct + '%';
+                },
+
+                onprocessfile: (error, file) => {
+                    if (!error) {
+                        if (file.serverId) {
+                            uploadedId = file.serverId;
+                        }
+                        console.log('Final uploadedId:', uploadedId);
+                        document.getElementById('progress-text').textContent = 'Upload complete ✅';
+                    }
+                }
+            });
+
+            // Form Submit
+            document.getElementById('lecture-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                if (!uploadedId) {
+                    alert('Please wait for video to finish uploading!');
+                    return;
+                }
+
+                const descriptionInput = document.getElementById('description-input');
+                if (typeof quill !== 'undefined') {
+                    // Agar Quill editor use kar rahe ho
+                    descriptionInput.value = quill.root.innerHTML;
+                }
+
+                const btn = document.getElementById('submit-btn');
+                btn.disabled = true;
+                btn.textContent = 'Saving...';
+
+                try {
+                    const res = await fetch('{{ route('upload.finalize') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                            'Accept': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            module_id: document.getElementById('module_id').value,
+                            title: document.getElementById('title').value,
+                            description: document.getElementById('description-input')
+                                .value,
+                            upload_id: uploadedId,
+                            file_name: uploadedName,
+                        })
+                    });
+
+                    const result = await res.json();
+
+                    if (result.success) {
+                        window.location.href = '{{ route('lecture.index') }}';
+                    } else {
+                        alert('Something went wrong!');
+                        btn.disabled = false;
+                        btn.textContent = 'Create Lecture';
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('Error submitting form!');
+                    btn.disabled = false;
+                    btn.textContent = 'Create Lecture';
+                }
+            });
         });
     </script>
 </body>

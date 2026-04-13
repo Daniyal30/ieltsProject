@@ -30,4 +30,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function batches()
+    {
+        return $this->belongsToMany(Batch::class, 'batch_student');
+    }
 }

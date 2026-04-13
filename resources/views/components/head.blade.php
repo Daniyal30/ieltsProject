@@ -18,5 +18,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" />
     <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
-    
+    <link href="https://unpkg.com/filepond/dist/filepond.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
 </head>

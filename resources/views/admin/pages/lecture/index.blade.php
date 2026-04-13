@@ -1189,7 +1189,7 @@
                 </div>
 
 
-                @if(session('success'))
+                @if (session('success'))
                     <div class="alert-success" id="successAlert">
                         <div class="alert-icon">
                             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -1198,7 +1198,8 @@
                             </svg>
                         </div>
                         <span>{{ session('success') }}</span>
-                        <button onclick="document.getElementById('successAlert').style.display='none'" class="alert-close">
+                        <button onclick="document.getElementById('successAlert').style.display='none'"
+                            class="alert-close">
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -1220,8 +1221,8 @@
                         <div class="table-toolbar__right">
                             <button class="btn-bulk-delete" id="bulkDeleteBtn" onclick="openBulkModal()"
                                 style="display:none;">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
-                                    viewBox="0 0 24 24">
+                                <svg width="13" height="13" fill="none" stroke="currentColor"
+                                    stroke-width="2" viewBox="0 0 24 24">
                                     <polyline points="3 6 5 6 21 6" />
                                     <path d="M19 6l-1 14H6L5 6" />
                                     <path d="M10 11v6M14 11v6" />
@@ -1303,19 +1304,20 @@
 
                                                 {{-- Edit Button --}}
 
-                                                <a href="{{ route('lecture.edit', $lecture->id) }}" class="act-btn edit"
-                                                    title="Edit">
-                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                <a href="{{ route('lecture.edit', $lecture->id) }}"
+                                                    class="act-btn edit" title="Edit">
+                                                    <svg width="13" height="13" fill="none"
+                                                        stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
                                                         <path d="M12 20h9" />
-                                                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                                                        <path
+                                                            d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
                                                     </svg>
                                                 </a>
 
-                                                <a href="{{ route('lecture.show', $lecture->id) }}" class="act-btn view"
-                                                    title="View Details">
-                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                        stroke-width="2" viewBox="0 0 24 24">
+                                                <a href="{{ route('lecture.show', $lecture->id) }}"
+                                                    class="act-btn view" title="View Details">
+                                                    <svg width="13" height="13" fill="none"
+                                                        stroke="var(--muted)" stroke-width="2" viewBox="0 0 24 24">
                                                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                                                         <circle cx="12" cy="12" r="3" />
                                                     </svg>
@@ -1323,14 +1325,15 @@
 
                                                 {{-- Delete Button --}}
 
-                                                <form action="{{ route('lecture.destroy', $lecture->id) }}" method="POST"
-                                                    style="display:inline;">
+                                                <form action="{{ route('lecture.destroy', $lecture->id) }}"
+                                                    method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
 
                                                     <button class="act-btn del" title="Delete">
-                                                        <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                            stroke-width="2" viewBox="0 0 24 24">
+                                                        <svg width="13" height="13" fill="none"
+                                                            stroke="var(--muted)" stroke-width="2"
+                                                            viewBox="0 0 24 24">
                                                             <polyline points="3 6 5 6 21 6" />
                                                             <path d="M19 6l-1 14H6L5 6" />
                                                             <path d="M10 11v6M14 11v6" />
@@ -1354,7 +1357,8 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" style="text-align:center; padding: 2rem; color:var(--muted);">
+                                        <td colspan="8"
+                                            style="text-align:center; padding: 2rem; color:var(--muted);">
                                             No sidebar items found.
                                         </td>
                                     </tr>
@@ -1367,11 +1371,15 @@
                             </div>
                         </table>
 
+                        <div style="margin-top:1rem;">
+                            {{ $lectures->links() }}
+                        </div>
+
                         <!-- Empty State -->
                         <div class="empty-state" id="emptyState">
                             <div class="empty-state__icon">
-                                <svg width="24" height="24" fill="none" stroke="var(--muted)" stroke-width="1.5"
-                                    viewBox="0 0 24 24">
+                                <svg width="24" height="24" fill="none" stroke="var(--muted)"
+                                    stroke-width="1.5" viewBox="0 0 24 24">
                                     <rect x="3" y="3" width="18" height="18" rx="2" />
                                     <path d="M3 9h18M9 3v18" />
                                 </svg>
@@ -1386,8 +1394,8 @@
                         <div class="pagination-info">Showing 1–6 of 6 items</div>
                         <div class="pagination-btns">
                             <button class="pg-btn" disabled>
-                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
-                                    viewBox="0 0 24 24">
+                                <svg width="13" height="13" fill="none" stroke="currentColor"
+                                    stroke-width="2" viewBox="0 0 24 24">
                                     <polyline points="15 18 9 12 15 6" />
                                 </svg>
                             </button>
@@ -1395,8 +1403,8 @@
                             <button class="pg-btn">2</button>
                             <button class="pg-btn">3</button>
                             <button class="pg-btn">
-                                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"
-                                    viewBox="0 0 24 24">
+                                <svg width="13" height="13" fill="none" stroke="currentColor"
+                                    stroke-width="2" viewBox="0 0 24 24">
                                     <polyline points="9 18 15 12 9 6" />
                                 </svg>
                             </button>
@@ -1412,7 +1420,8 @@
     <div class="modal-overlay" id="deleteModal">
         <div class="modal">
             <div class="modal__icon">
-                <svg width="22" height="22" fill="none" stroke="#b02a2a" stroke-width="2" viewBox="0 0 24 24">
+                <svg width="22" height="22" fill="none" stroke="#b02a2a" stroke-width="2"
+                    viewBox="0 0 24 24">
                     <polyline points="3 6 5 6 21 6" />
                     <path d="M19 6l-1 14H6L5 6" />
                     <path d="M10 11v6M14 11v6" />
@@ -1431,13 +1440,12 @@
     <x-script />
 
     <script>
-
         let selectedIds = [];
         let rowToDelete = null;
         let deleteId = null;
 
 
-        document.getElementById('tableBody').addEventListener('change', function (e) {
+        document.getElementById('tableBody').addEventListener('change', function(e) {
             if (e.target.type === 'checkbox') {
                 updateSelectedIds();
             }
@@ -1499,15 +1507,17 @@
 
             if (!confirm(`${selectedIds.length} items delete karna chahte hain?`)) return;
 
-            fetch('{{ route("sidebar.bulk-destroy") }}', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({ ids: selectedIds })
-            })
+            fetch('{{ route('sidebar.bulk-destroy') }}', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ids: selectedIds
+                    })
+                })
                 .then(r => r.json())
                 .then(data => {
                     if (data.success) {
@@ -1527,25 +1537,25 @@
             document.getElementById('bulkDeleteModal').classList.remove('open');
         }
 
-        document.getElementById('bulkDeleteModal').addEventListener('click', function (e) {
+        document.getElementById('bulkDeleteModal').addEventListener('click', function(e) {
             if (e.target === this) closeBulkModal();
         });
 
         // ── Toggle Active / Inactive (AJAX) ──
         function toggleStatus(btn, id) {
             fetch(`/admin/sidebar/${id}/toggle`, {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-            })
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                })
                 .then(r => r.json())
                 .then(data => {
                     const row = btn.closest('tr');
                     const pill = row.querySelector('.status-pill');
-                    const isActive = data.is_active == 0;  // 0 = active (tumhari logic)
+                    const isActive = data.is_active == 0; // 0 = active (tumhari logic)
 
                     row.dataset.status = isActive ? 'active' : 'inactive';
                     pill.className = 'status-pill ' + (isActive ? 'active' : 'inactive');
@@ -1586,7 +1596,7 @@
             deleteId = null;
         }
 
-        document.getElementById('deleteModal').addEventListener('click', function (e) {
+        document.getElementById('deleteModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
 
