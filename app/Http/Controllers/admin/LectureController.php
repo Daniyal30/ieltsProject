@@ -67,7 +67,7 @@ class LectureController extends Controller
     {
         $uploadId = $request->getContent();
 
-        // ✅ Safety check — invalid ID ignore karo
+
         if (empty($uploadId) || str_contains($uploadId, 'object') || str_contains($uploadId, 'XMLHttpRequest')) {
             return response('', 200);
         }
@@ -107,7 +107,6 @@ class LectureController extends Controller
             return response()->json(['error' => 'Upload session not found'], 404);
         }
 
-        // Final file path
         $finalFileName = 'lectures/'.uniqid().'_'.$fileName;
         $finalPath = storage_path('app/public/'.$finalFileName);
 
@@ -115,7 +114,7 @@ class LectureController extends Controller
             mkdir(dirname($finalPath), 0755, true);
         }
 
-        // Sort chunks by offset and merge
+
         $chunks = glob($chunkDir.'/chunk_*');
         usort($chunks, function ($a, $b) use ($chunkDir) {
             $offsetA = (int) str_replace($chunkDir.'/chunk_', '', $a);
@@ -132,7 +131,7 @@ class LectureController extends Controller
         fclose($finalFile);
         rmdir($chunkDir);
 
-        // Dispatch background job — user redirected immediately
+
         ProcessVideoUpload::dispatch([
             'module_id' => $request->input('module_id'),
             'title' => $request->input('title'),
@@ -181,7 +180,7 @@ class LectureController extends Controller
             'module_id' => 'required',
             'title' => 'required|regex:/^[a-zA-Z\s]+$/',
             'description' => 'nullable',
-            'upload_id' => 'nullable', // nullable — video change optional hai
+            'upload_id' => 'nullable',
         ]);
 
         $data = [
@@ -190,7 +189,6 @@ class LectureController extends Controller
             'description' => $request->input('description'),
         ];
 
-        // Agar naya video upload kiya hai
         if ($request->input('upload_id')) {
             $uploadId = $request->input('upload_id');
             $fileName = $request->input('file_name', 'video.mp4');
@@ -221,7 +219,6 @@ class LectureController extends Controller
                 fclose($finalFile);
                 rmdir($chunkDir);
 
-                // Purani video delete karo
                 $oldPath = storage_path('app/public/'.$lecture->video_path);
                 if (file_exists($oldPath)) {
                     unlink($oldPath);

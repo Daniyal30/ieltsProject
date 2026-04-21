@@ -802,7 +802,7 @@
 <body>
     <div class="scene">
 
-        <!-- ── Sidebar ── -->
+
         <aside class="sidebar">
             <div class="orb"></div>
 
@@ -821,10 +821,10 @@
             <x-sidebar />
         </aside>
 
-        <!-- ── Main Panel ── -->
+
         <div class="main-panel">
 
-            <!-- Topbar -->
+
             <header class="topbar">
                 <div class="topbar__left">
                     <span class="topbar__eyebrow">Batch Management</span>
@@ -858,10 +858,10 @@
                 </div>
             </header>
 
-            <!-- Content -->
+
             <main class="content">
 
-                <!-- Page Header -->
+
                 <div class="page-header">
                     <div class="page-header__left">
                         <h1>New Batch</h1>
@@ -882,7 +882,7 @@
                     </div>
                 </div>
 
-                <!-- Form Card -->
+
                 <div class="form-card">
                     <div class="form-card__inner">
                         <div class="form-card__title">Item Details</div>
@@ -892,7 +892,7 @@
                             @csrf
                             <div class="form-grid">
 
-                                <!-- Title -->
+
                                 <div class="form-group">
                                     <label for="title">Name <span class="required">*</span></label>
                                     <div class="input-wrap">
@@ -911,7 +911,6 @@
                                     @enderror
                                 </div>
 
-                                <!-- URL -->
                                 <div class="form-group">
                                     <label for="url">Days <span class="required">*</span></label>
                                     <div class="input-wrap">
@@ -938,7 +937,7 @@
                                     @enderror
                                 </div>
 
-                                <!-- Icon -->
+
                                 {{-- <div class="form-group">
                                     <label for="icon">Icon Name <span class="required">*</span></label>
                                     <div class="input-wrap select-wrap">
@@ -988,7 +987,7 @@
 
                             </div>
 
-                            <!-- Actions -->
+
                             <div class="form-actions">
                                 <button type="submit" class="btn-accent">
                                     <svg width="14" height="14" fill="none" stroke="currentColor"
