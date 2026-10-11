@@ -25,7 +25,7 @@ class UserController extends Controller
             'profile_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'target_band_score' => 'required',
             'address' => 'nullable',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
         ]);
 
         if ($request->hasFile('profile_image')) {

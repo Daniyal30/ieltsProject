@@ -859,25 +859,24 @@
             <main class="content">
 
                 <!-- Stat Cards -->
-                <div class="stats-grid">
+                {{-- <div class="stats-grid">
                     <div class="stat-card danger">
                         <div class="stat-card__orb"></div>
                         <div class="stat-card__label">
-                            Weekly Sales
+                            Students
                             <svg width="16" height="16" fill="none" stroke="rgba(220,80,80,.5)" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                                 <polyline points="17 6 23 6 23 12" />
                             </svg>
                         </div>
-                        <div class="stat-card__value">$ 15,000</div>
-                        <div class="stat-card__change">↑ Increased by 60%</div>
+                        <div class="stat-card__value">00</div>
                     </div>
 
                     <div class="stat-card info">
                         <div class="stat-card__orb"></div>
                         <div class="stat-card__label">
-                            Weekly Orders
+                            Batches
                             <svg width="16" height="16" fill="none" stroke="rgba(55,138,221,.5)" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <path
@@ -885,14 +884,13 @@
                                 <line x1="7" y1="7" x2="7.01" y2="7" />
                             </svg>
                         </div>
-                        <div class="stat-card__value">45,633</div>
-                        <div class="stat-card__change">↓ Decreased by 10%</div>
+                        <div class="stat-card__value">00</div>
                     </div>
 
                     <div class="stat-card success">
                         <div class="stat-card__orb"></div>
                         <div class="stat-card__label">
-                            Visitors Online
+                            Assignments
                             <svg width="16" height="16" fill="none" stroke="rgba(99,153,34,.5)" stroke-width="2"
                                 viewBox="0 0 24 24">
                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -901,16 +899,15 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
                         </div>
-                        <div class="stat-card__value">95,574</div>
-                        <div class="stat-card__change">↑ Increased by 5%</div>
+                        <div class="stat-card__value">00</div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Bottom Panels -->
                 <div class="bottom-grid">
 
                     <!-- Recent Projects Table -->
-                    <div class="panel">
+                    {{-- <div class="panel">
                         <div class="panel__inner">
                             <div class="panel__header">
                                 <div>
@@ -956,10 +953,10 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Activity Log -->
-                    <div class="panel">
+                    {{-- <div class="panel">
                         <div class="panel__inner">
                             <div class="panel__header">
                                 <div>
@@ -1041,7 +1038,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
             </main>

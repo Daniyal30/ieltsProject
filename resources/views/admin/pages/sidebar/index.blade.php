@@ -1125,11 +1125,17 @@
             <!-- Topbar -->
             <header class="topbar">
                 <div class="topbar__left">
-                    {{-- <span class="topbar__eyebrow">Sidebar Management</span> --}}
+                    <span class="topbar__eyebrow">Sidebar Management</span>
                     <div class="topbar__title">
-
-                        {{-- <h1>All Sidebar Items</h1>
-                        <p>Manage, edit and reorder your navigation sidebar items.</p> --}}
+                        <div class="icon-badge">
+                            <svg width="14" height="14" fill="none" stroke="var(--ink)" stroke-width="2.2"
+                                viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M9 3v18" />
+                                <path d="M15 3v18" />
+                            </svg>
+                        </div>
+                        All Sidebar
                     </div>
                 </div>
                 <div class="topbar__right">
@@ -1291,11 +1297,9 @@
                                     </th>
                                     <th>#</th>
                                     <th>Title</th>
-                                    <th>URL</th>
                                     <th>Icon</th>
                                     <th>Order</th>
                                     <th>Status</th>
-                                    <th>Created At</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -1319,16 +1323,10 @@
                                         {{-- Title --}}
                                         <td style="font-weight:500;">{{ $sidebar->title }}</td>
 
-                                        {{-- URL --}}
-                                        <td>
-                                            <span class="url-cell">{{ $sidebar->route_name }}</span>
-                                        </td>
-
                                         {{-- Icon --}}
                                         <td>
                                             <span class="icon-chip">
                                                 <i class="{{ $sidebar->icon }}"></i>
-
                                             </span>
                                         </td>
 
@@ -1344,11 +1342,6 @@
                                                 class="status-pill {{ $sidebar->is_active == 0 ? 'active' : 'inactive' }}">
                                                 {{ $sidebar->is_active == 0 ? 'Active' : 'Inactive' }}
                                             </span>
-                                        </td>
-
-                                        {{-- Date --}}
-                                        <td style="color:var(--muted);font-size:12px;">
-                                            {{ $sidebar->created_at->format('d M Y') }}
                                         </td>
 
                                         {{-- Actions --}}
@@ -1393,16 +1386,6 @@
                                                         </svg>
                                                     </button>
                                                 </form>
-                                                {{-- <a href="{{ route('sidebar.destroy', $sidebar->id) }}" class=""
-                                                    title="Delete">
-                                                    <svg width="13" height="13" fill="none" stroke="var(--muted)"
-                                                        stroke-width="2" viewBox="0 0 24 24">
-                                                        <polyline points="3 6 5 6 21 6" />
-                                                        <path d="M19 6l-1 14H6L5 6" />
-                                                        <path d="M10 11v6M14 11v6" />
-                                                        <path d="M9 6V4h6v2" />
-                                                    </svg>
-                                                </a> --}}
 
                                             </div>
                                         </td>
@@ -1502,7 +1485,6 @@
             selectedIds = [];
             document.querySelectorAll('#tableBody input[type="checkbox"]:checked').forEach(cb => {
                 const row = cb.closest('tr');
-                // row se sidebar id lena - delete button ke form action se
                 const form = row.querySelector('form[action]');
                 if (form) {
                     const url = form.action;
@@ -1644,8 +1626,6 @@
         document.getElementById('deleteModal').addEventListener('click', function (e) {
             if (e.target === this) closeModal();
         });
-
-
         setTimeout(() => {
             const alert = document.getElementById('successAlert');
             if (alert) {
@@ -1656,8 +1636,5 @@
             }
         }, 4000);
     </script>
-
-
 </body>
-
 </html>

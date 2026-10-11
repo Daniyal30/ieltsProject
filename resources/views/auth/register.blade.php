@@ -517,7 +517,7 @@
                                     </svg>
                                 </span>
                                 <input type="tel" id="phone" value="{{ old('phone') }}" name="phone"
-                                    placeholder="03001234567" autocomplete="off">
+                                    placeholder="+92" autocomplete="off">
                             </div>
                             @error('phone')
                                 <p class="field__error">{{ $message }}</p>
@@ -623,6 +623,23 @@
                         @enderror
                     </div>
 
+                    <div class="field">
+                            <label for="password">Password <span class="text-danger">*</span></label>
+                            <div class="field__wrap">
+                                <span class="field__icon">
+                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
+                                        viewBox="0 0 24 24">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                    </svg>
+                                </span>
+                                <input type="password" id="password" name="password" placeholder="Min. 8 chars">
+                            </div>
+                            @error('password')
+                                <p class="field__error">{{ $message }}</p>
+                            @enderror
+                        </div>
+
                     <!-- Address -->
                     <div class="field">
                         <label for="address">Address</label>
@@ -640,41 +657,6 @@
                         @error('address')
                             <p class="field__error">{{ $message }}</p>
                         @enderror
-                    </div>
-
-                    <!-- Password + Confirm (2 column) -->
-                    <div class="field-row">
-                        <div class="field">
-                            <label for="password">Password <span class="text-danger">*</span></label>
-                            <div class="field__wrap">
-                                <span class="field__icon">
-                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
-                                        viewBox="0 0 24 24">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                    </svg>
-                                </span>
-                                <input type="password" id="password" name="password" placeholder="Min. 8 chars">
-                            </div>
-                            @error('password')
-                                <p class="field__error">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="field">
-                            <label for="password_confirmation">Confirm</label>
-                            <div class="field__wrap">
-                                <span class="field__icon">
-                                    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"
-                                        viewBox="0 0 24 24">
-                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                    </svg>
-                                </span>
-                                <input type="password" id="password_confirmation" name="password_confirmation"
-                                    placeholder="Re-enter">
-                            </div>
-                        </div>
                     </div>
 
                     <button type="submit" class="btn-primary">
